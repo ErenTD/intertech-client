@@ -6,6 +6,19 @@ import MenuBar from "./components/MenuBar";
 import InfoCard from "./components/InfoCard";
 import FooterBar from "./components/FooterBar";
 
+const AHMET = {
+    name: "Ahmet",
+    age: 222900000,
+    addr1: {
+        eth: 10.2665,
+        usd: 1026.65,
+    },
+    addr2: {
+        eth: 20.365,
+        usd: 244.38,
+    },
+};
+
 const LandingPage = () => {
     return (
         <div
@@ -59,7 +72,7 @@ const LandingPage = () => {
                     </div>
                 </div>
                 <div style={{ marginLeft: "1rem", marginRight: "20rem" }}>
-                    <InfoCard buttons={false} />
+                    <InfoCard person={AHMET} />
                 </div>
             </div>
             <FooterBar />
