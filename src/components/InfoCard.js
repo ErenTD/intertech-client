@@ -1,31 +1,54 @@
-import { Avatar, Card, Progress } from "antd";
+import { Avatar, Button, Card, Progress } from "antd";
 import React from "react";
 
-const InfoCard = () => (
+const InfoCard = (props) => (
     <Card
         style={{
             width: 300,
         }}
         cover={
-            <div
-                style={{
-                    overflow: "hidden",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                }}
-            >
-                <Avatar
+            <div>
+                <div
                     style={{
+                        overflow: "hidden",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                         marginLeft: "auto",
                         marginRight: "auto",
-                        marginTop: "10%",
                     }}
-                    size={125}
-                    src="https://joeschmoe.io/api/v1/random"
-                />
+                >
+                    <Avatar
+                        style={{
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            marginTop: "10%",
+                        }}
+                        size={125}
+                        src="https://joeschmoe.io/api/v1/random"
+                    />
+                </div>
+                {props.buttons && (
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            marginTop: "10%",
+                        }}
+                    >
+                        <div
+                            style={{ marginLeft: "2rem", marginRight: "auto" }}
+                        >
+                            <Button>Çek</Button>
+                        </div>
+                        <div
+                            style={{ marginLeft: "auto", marginRight: "2rem" }}
+                        >
+                            <Button>Yatır</Button>
+                        </div>
+                    </div>
+                )}
             </div>
         }
     >

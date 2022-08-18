@@ -59,7 +59,7 @@ const LandingPage = () => {
                     </div>
                 </div>
                 <div style={{ marginLeft: "1rem", marginRight: "20rem" }}>
-                    <InfoCard />
+                    <InfoCard buttons={false} />
                 </div>
             </div>
             <FooterBar />
