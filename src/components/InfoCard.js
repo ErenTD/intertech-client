@@ -4,8 +4,9 @@ import React from "react";
 const InfoCard = (props) => {
     const years = Math.trunc(props.person.age / 31536000);
     const days = Math.trunc((props.person.age - years * 31536000) / 86400);
-    const progress =
-        100 - Math.trunc(((568036800 - props.person.age) / 568036800) * 100);
+    const progress = Math.trunc(
+        ((568036800 - props.person.age) / 568036800) * 100
+    );
     return (
         <Card
             style={{
