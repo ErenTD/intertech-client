@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import LandingPage from "./LandingPage";
 import MenuBar from "./components/MenuBar";
 import FooterBar from "./components/FooterBar";
+import AboutPage from "./AboutPage";
 
 function App() {
     const [current, setCurrent] = useState("sub1");
@@ -15,6 +16,7 @@ function App() {
         <div>
             <MenuBar onClick={onClick} current={current} />
             {current === "sub1" && <LandingPage />}
+            {current === "sub2" && <AboutPage />}
             <FooterBar />
         </div>
     );
