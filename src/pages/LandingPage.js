@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.min.css";
 
-import InfoCard from "./components/InfoCard";
+import InfoCard from "../components/InfoCard";
 
 const AHMET = {
     name: "Ahmet",

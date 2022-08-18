@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import LandingPage from "./LandingPage";
+import LandingPage from "./pages/LandingPage";
 import MenuBar from "./components/MenuBar";
 import FooterBar from "./components/FooterBar";
-import AboutPage from "./AboutPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
     const [current, setCurrent] = useState("sub1");
