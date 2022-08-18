@@ -1,5 +1,5 @@
 import { Menu, Button } from "antd";
-import React, { useState } from "react";
+import React from "react";
 
 function getItem(label, key, icon, type) {
     return {
@@ -17,14 +17,7 @@ const items = [
     getItem(<Button>GİRİŞ YAP</Button>, "sub4", null, []),
 ];
 
-const MenuBar = () => {
-    const [current, setCurrent] = useState("sub1");
-
-    const onClick = (e) => {
-        // console.log("click", e);
-        setCurrent(e.key);
-    };
-
+const MenuBar = (props) => {
     return (
         <div
             style={{
@@ -35,8 +28,8 @@ const MenuBar = () => {
             }}
         >
             <Menu
-                onClick={onClick}
-                selectedKeys={[current]}
+                onClick={props.onClick}
+                selectedKeys={[props.current]}
                 style={{
                     marginLeft: "auto",
                     marginRight: 0,
