@@ -1,11 +1,5 @@
-import {
-    InfoCircleOutlined,
-    HomeOutlined,
-    MailOutlined,
-    WalletOutlined,
-} from "@ant-design/icons";
-import { Menu } from "antd";
-import React from "react";
+import { Menu, Button } from "antd";
+import React, { useState } from "react";
 
 function getItem(label, key, icon, type) {
     return {
@@ -17,42 +11,40 @@ function getItem(label, key, icon, type) {
 }
 
 const items = [
-    getItem("İLETİŞİM", "sub3", <MailOutlined />, []),
-    getItem("ANASAYFA", "sub1", <HomeOutlined />, []),
-    getItem("HAKKIMIZDA", "sub2", <InfoCircleOutlined />, []),
-    getItem("WALLET CONNECT", "sub4", <WalletOutlined />, []),
+    getItem("ANASAYFA", "sub1", null, []),
+    getItem("HAKKIMIZDA", "sub2", null, []),
+    getItem("İLETİŞİM", "sub3", null, []),
+    getItem(<Button>GİRİŞ YAP</Button>, "sub4", null, []),
 ];
 
-const onClick = (e) => {
-    console.log("click", e);
-};
+const MenuBar = () => {
+    const [current, setCurrent] = useState("sub1");
 
-const MenuBar = () => (
-    <div
-        style={{
-            display: "flex",
-            alignItems: "center",
-            marginLeft: "auto",
-            marginRight: "auto",
-        }}
-    >
-        <h2
+    const onClick = (e) => {
+        // console.log("click", e);
+        setCurrent(e.key);
+    };
+
+    return (
+        <div
             style={{
-                marginLeft: 0,
-                marginRight: "auto",
+                display: "flex",
+                alignItems: "center",
+                marginLeft: "auto",
+                marginRight: "12%",
             }}
         >
-            RetiredKid
-        </h2>
-        <Menu
-            onClick={onClick}
-            style={{
-                marginLeft: "auto",
-                marginRight: 0,
-            }}
-            mode="horizontal"
-            items={items}
-        />
-    </div>
-);
+            <Menu
+                onClick={onClick}
+                selectedKeys={[current]}
+                style={{
+                    marginLeft: "auto",
+                    marginRight: 0,
+                }}
+                mode="horizontal"
+                items={items}
+            />
+        </div>
+    );
+};
 export default MenuBar;

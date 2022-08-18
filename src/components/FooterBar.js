@@ -19,11 +19,11 @@ const FooterBar = () => {
                     marginRight: "auto",
                 }}
             >
-                <img src={TeamLogo} style={{ marginLeft: 0 }} alt="Logo" />
+                <img src={TeamLogo} style={{ marginLeft: "12%" }} alt="Logo" />
                 <h3 style={{ margin: "auto" }}>
                     2022 Chain Masters. All Rights Reserved.
                 </h3>
-                <div style={{ marginRight: 0 }}>
+                <div style={{ marginRight: "12%" }}>
                     <TwitterOutlined
                         style={{ width: "3em", fontSize: "30px" }}
                     />
