@@ -22,10 +22,7 @@ const LandingPage = () => {
     return (
         <>
             <MenuBar />
-            <div
-                className="App"
-                style={{ marginLeft: "12%", marginRight: "12%" }}
-            >
+            <div style={{ marginLeft: "12%", marginRight: "12%" }}>
                 <div
                     style={{
                         marginTop: "5rem",
