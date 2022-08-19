@@ -12,6 +12,7 @@ const InfoCard = (props) => {
     return (
         <Card
             style={{
+                ...props.style,
                 width: 300,
             }}
             cover={

@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import { Routes, Route, Link } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
+import ChildPage from "./pages/ChildPage";
 import MenuBar from "./components/MenuBar";
 import FooterBar from "./components/FooterBar";
 import AboutPage from "./pages/AboutPage";
@@ -97,7 +98,7 @@ const Landing = (props) => {
 };
 
 const Child = () => {
-    return <div>TODO: Child Page</div>;
+    return <ChildPage />;
 };
 
 const Parent = () => {
