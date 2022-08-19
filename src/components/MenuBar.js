@@ -14,7 +14,6 @@ const items = [
     getItem("ANASAYFA", "sub1", null, []),
     getItem("HAKKIMIZDA", "sub2", null, []),
     getItem("İLETİŞİM", "sub3", null, []),
-    getItem(<Button>GİRİŞ YAP</Button>, "sub4", null, []),
 ];
 
 const MenuBar = (props) => {
@@ -37,6 +36,20 @@ const MenuBar = (props) => {
                 mode="horizontal"
                 items={items}
             />
+            {props.connect !== undefined && (
+                <Button style={{ marginLeft: "1rem" }} onClick={props.connect}>
+                    GİRİŞ YAP
+                </Button>
+            )}
+            {props.typeChild && (
+                <Button style={{ marginLeft: "1rem" }}>HESABIM</Button>
+            )}
+            {props.typeParent && (
+                <Button style={{ marginLeft: "1rem" }}>ÇOCUKLAR</Button>
+            )}
+            {props.typeAdmin && (
+                <Button style={{ marginLeft: "1rem" }}>PANEL</Button>
+            )}
         </div>
     );
 };
