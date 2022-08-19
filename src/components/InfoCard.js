@@ -2,10 +2,12 @@ import { Avatar, Button, Card, Progress } from "antd";
 import React from "react";
 
 const InfoCard = (props) => {
-    const years = Math.trunc(props.person.age / 31536000);
-    const days = Math.trunc((props.person.age - years * 31536000) / 86400);
+    const years = Math.trunc((568036800 - props.person.age) / 31536000);
+    const days = Math.trunc(
+        (568036800 - props.person.age - years * 31536000) / 86400
+    );
     const progress = Math.trunc(
-        ((568036800 - props.person.age) / 568036800) * 100
+        100 - ((568036800 - props.person.age) / 568036800) * 100
     );
     return (
         <Card
