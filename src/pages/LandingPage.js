@@ -5,6 +5,7 @@ import InfoCard from "../components/InfoCard";
 
 const AHMET = {
     name: "Ahmet",
+    address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
     age: 345200000,
     addr1: {
         eth: 10.2665,

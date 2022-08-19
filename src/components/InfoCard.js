@@ -77,6 +77,7 @@ const InfoCard = (props) => {
                 }}
             >
                 <h1>{props.person.name}</h1>
+                <h6>{props.person.address}</h6>
                 <br />
                 <table style={{ textAlign: "left" }}>
                     <thead>
