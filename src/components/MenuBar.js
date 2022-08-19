@@ -1,4 +1,5 @@
 import { Menu, Button } from "antd";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 
 function getItem(label, key, icon, type) {
@@ -17,6 +18,28 @@ const items = [
 ];
 
 const MenuBar = (props) => {
+    const navigate = useNavigate();
+
+    const landingClickHandler = (e) => {
+        props.onClick(e);
+        navigate("/");
+    };
+
+    const childClickHandler = () => {
+        props.onClick({ key: "sub4" });
+        navigate("/child");
+    };
+
+    const parentClickHandler = () => {
+        props.onClick({ key: "sub4" });
+        navigate("/parent");
+    };
+
+    const adminClickHandler = () => {
+        props.onClick({ key: "sub4" });
+        navigate("/admin");
+    };
+
     return (
         <div
             style={{
@@ -27,7 +50,7 @@ const MenuBar = (props) => {
             }}
         >
             <Menu
-                onClick={props.onClick}
+                onClick={landingClickHandler}
                 selectedKeys={[props.current]}
                 style={{
                     marginLeft: "auto",
@@ -42,13 +65,28 @@ const MenuBar = (props) => {
                 </Button>
             )}
             {props.typeChild && (
-                <Button style={{ marginLeft: "1rem" }}>HESABIM</Button>
+                <Button
+                    style={{ marginLeft: "1rem" }}
+                    onClick={childClickHandler}
+                >
+                    HESABIM
+                </Button>
             )}
             {props.typeParent && (
-                <Button style={{ marginLeft: "1rem" }}>ÇOCUKLAR</Button>
+                <Button
+                    style={{ marginLeft: "1rem" }}
+                    onClick={parentClickHandler}
+                >
+                    ÇOCUKLAR
+                </Button>
             )}
             {props.typeAdmin && (
-                <Button style={{ marginLeft: "1rem" }}>PANEL</Button>
+                <Button
+                    style={{ marginLeft: "1rem" }}
+                    onClick={adminClickHandler}
+                >
+                    PANEL
+                </Button>
             )}
         </div>
     );
