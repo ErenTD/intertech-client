@@ -4,10 +4,12 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
 import ChildPage from "./pages/ChildPage";
+import ParentDeposit from"./pages/ParentDeposit";
 import MenuBar from "./components/MenuBar";
 import FooterBar from "./components/FooterBar";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 
@@ -102,7 +104,7 @@ const Child = () => {
 };
 
 const Parent = () => {
-    return <div>TODO: Parent Page</div>;
+    return <ParentDeposit/>;
 };
 
 const Admin = () => {

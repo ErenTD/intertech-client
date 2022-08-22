@@ -5,7 +5,8 @@ import {
     Input,
     InputNumber,
     Card,
-    Row
+    Row,
+    Modal
   } from 'antd';
   import React, { useState } from 'react';
   import "antd/dist/antd.min.css";
@@ -18,6 +19,8 @@ import {
     };
   
     return (
+      <Modal>
+
        <Row type='flex' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10%' }}>
           <Card
              title="Yeni Çocuk Ekle"
@@ -26,6 +29,7 @@ import {
                 verticalAlign: 'middle'
              }}
           >
+            
              <Form
                 labelCol={{
                    span: 8,
@@ -59,6 +63,7 @@ import {
              </Form>
           </Card>
        </Row>
+       </Modal>
     );
   };
   

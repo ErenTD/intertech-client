@@ -1,7 +1,11 @@
 import { Avatar, Button, Card, Progress } from "antd";
-import React from "react";
+import React,{useState} from "react";
+import ParentComp from "../pages/ParentComp";
+
 
 const InfoCard = (props) => {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
     const years = Math.trunc((568036800 - props.person.age) / 31536000);
     const days = Math.trunc(
         (568036800 - props.person.age - years * 31536000) / 86400
@@ -9,6 +13,7 @@ const InfoCard = (props) => {
     const progress = Math.trunc(
         100 - ((568036800 - props.person.age) / 568036800) * 100
     );
+    const interact=()=> {setIsModalVisible(true);};
     return (
         <Card
             style={{
@@ -17,6 +22,7 @@ const InfoCard = (props) => {
             }}
             cover={
                 <div>
+                    <ParentComp isModalVisible={isModalVisible} setIsModalVisible= {setIsModalVisible} />
                     <div
                         style={{
                             overflow: "hidden",
@@ -52,7 +58,9 @@ const InfoCard = (props) => {
                                     marginRight: "auto",
                                 }}
                             >
-                                <Button type="primary">Para Çek</Button>
+                                <Button type="primary" onClick={interact} islem={"Para Çekme"}>
+                                    Para Çek
+                                </Button>
                             </div>
                             <div
                                 style={{
@@ -60,7 +68,7 @@ const InfoCard = (props) => {
                                     marginRight: "2rem",
                                 }}
                             >
-                                <Button type="primary" danger>
+                                <Button type="primary" onClick={interact} islem={"Para Yatırma"}  danger>
                                     Para Yatır
                                 </Button>
                             </div>
