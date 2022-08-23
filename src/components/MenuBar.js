@@ -18,28 +18,29 @@ const items = [
     getItem("İLETİŞİM", "sub3", null, []),
 ];
 
-const MenuBar = (props) => {
-    const { accountType, connect } = useContext(ContractContext);
+const MenuBar = () => {
+    const { accountType, connect, current, setCurrent } =
+        useContext(ContractContext);
 
     const navigate = useNavigate();
 
     const landingClickHandler = (e) => {
-        props.onClick(e);
+        setCurrent(e.key);
         navigate("/");
     };
 
     const childClickHandler = () => {
-        props.onClick({ key: "sub4" });
+        setCurrent("sub4");
         navigate("/child");
     };
 
     const parentClickHandler = () => {
-        props.onClick({ key: "sub4" });
+        setCurrent("sub4");
         navigate("/parent");
     };
 
     const adminClickHandler = () => {
-        props.onClick({ key: "sub4" });
+        setCurrent("sub4");
         navigate("/admin");
     };
 
@@ -54,7 +55,7 @@ const MenuBar = (props) => {
         >
             <Menu
                 onClick={landingClickHandler}
-                selectedKeys={[props.current]}
+                selectedKeys={[current]}
                 style={{
                     marginLeft: "auto",
                     marginRight: 0,

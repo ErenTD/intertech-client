@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
@@ -14,25 +14,13 @@ import {
     ContractContext,
 } from "./contexts/ContractContext";
 
-//DELETE ME LATER
-let glbsc;
-
 const App = () => {
-    const [current, setCurrent] = useState("sub1");
-    //DELETE ME LATER
-    glbsc = setCurrent;
-
-    const onClick = (e) => {
-        // console.log("click", e);
-        setCurrent(e.key);
-    };
-
     return (
         <div>
             <ContractContextProvider>
-                <MenuBar onClick={onClick} />
+                <MenuBar />
                 <Routes>
-                    <Route path="/" element={<Landing current={current} />} />
+                    <Route path="/" element={<Landing />} />
                     <Route path="child" element={<Child />} />
                     <Route path="parent" element={<Parent />} />
                     <Route path="admin" element={<Admin />} />
@@ -45,11 +33,12 @@ const App = () => {
 };
 
 const Landing = (props) => {
+    const { current } = useContext(ContractContext);
     return (
         <div>
-            {props.current === "sub1" && <LandingPage />}
-            {props.current === "sub2" && <AboutPage />}
-            {props.current === "sub3" && <ContactPage />}
+            {current === "sub1" && <LandingPage />}
+            {current === "sub2" && <AboutPage />}
+            {current === "sub3" && <ContactPage />}
         </div>
     );
 };
@@ -68,8 +57,7 @@ const Admin = () => {
 
 //DELETE ME LATER
 const Temp = () => {
-    const { setAccountType } = useContext(ContractContext);
-    const setCurrent = glbsc;
+    const { setAccountType, setCurrent } = useContext(ContractContext);
 
     const ss0 = () => {
         setAccountType(0);
