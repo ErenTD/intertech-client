@@ -19,36 +19,18 @@ const AboutPage = () => {
                 >
                     <h1 style={{ textAlign: "center" }}>Hakkımızda</h1>
                     <h3>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam dictum lectus non purus gravida fringilla. Nunc
-                        tincidunt augue mauris, vel ultrices nibh tempus id. In
-                        blandit magna a vulputate viverra. Lorem ipsum dolor sit
-                        amet, consectetur adipiscing elit. Aliquam dictum lectus
-                        non purus gravida fringilla. Nunc tincidunt augue
-                        mauris, vel ultrices nibh tempus id. In blandit magna a
-                        vulputate viverra. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Aliquam dictum lectus non
-                        purus gravida fringilla. Nunc tincidunt augue mauris,
-                        vel ultrices nibh tempus id. In blandit magna a
-                        vulputate viverra.
+                    <b>Chain Masters</b> ekibi olarak bankacılık sektörünün 
+                        önemli bir eksiğini kapatmaya geldik. Merkeziyetsiz 
+                        finans teknolojisi hakkında uzmanlaşan ekibimiz ile 
+                        geliştirdiğimiz bu teknolojide çocuklarınıza kripto 
+                        cüzdan açabilecek, miras bırakabilecek ve onlar adına 
+                        yatırım yapabileceksiniz. Aynı zamanda 18 yaşına ulaşan 
+                        çocuğunuz istediği zaman kendi cüzdanını himayesi altına 
+                        alabilecek.
                     </h3>
                     <h3>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam dictum lectus non purus gravida fringilla. Nunc
-                        tincidunt augue mauris, vel ultrices nibh tempus id. In
-                        blandit magna a vulputate viverra.Lorem ipsum dolor sit
-                        amet, consectetur adipiscing elit. Aliquam dictum lectus
-                        non purus gravida fringilla. Nunc tincidunt augue
-                        mauris, vel ultrices nibh tempus id. In blandit magna a
-                        vulputate viverra.Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Aliquam dictum lectus non
-                        purus gravida fringilla. Nunc tincidunt augue mauris,
-                        vel ultrices nibh tempus id. In blandit magna a
-                        vulputate viverra.Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Aliquam dictum lectus non
-                        purus gravida fringilla. Nunc tincidunt augue mauris,
-                        vel ultrices nibh tempus id. In blandit magna a
-                        vulputate viverra.
+                        Dilerseniz, çocuğunuz 18 yaşına gelmeden hesaptaki parayı çekebilirsiniz.
+                        Bu şekilde ihtiyaç halinde paranıza istediğiniz zaman ulaşabileceksiniz.
                     </h3>
                 </div>
             </div>

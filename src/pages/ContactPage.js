@@ -20,7 +20,7 @@ const ContactPage = () => {
                 display: "flex",
             }}
         >
-            <h1 style={{ textAlign: "center" }}>Bize Ulaşın</h1>
+            <h1 style={{ textAlign: "center", marginLeft: "3rem"}}>Bize Ulaşın</h1>
 
             <Form
                 labelCol={{ span: 5 }}
