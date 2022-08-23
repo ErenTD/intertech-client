@@ -28,6 +28,30 @@ export const ContractContextProvider = (props) => {
         setCurrent("sub4");
     };
 
+    const childObject = {
+        name: "Ahmet",
+        address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
+        age: 345200000,
+        addr1: {
+            eth: 10.2665,
+            usd: 1026.65,
+        },
+        addr2: {
+            eth: 20.365,
+            usd: 244.38,
+        },
+    };
+
+    // const generateChildObject = async () => {
+    //     const gc = await contract.getChild();
+    //     childObject.name = gc.name;
+    //     childObject.address = gc.childAddress;
+    //     childObject.age = Date.now() / 1000 - gc.birthDate;
+    //     childObject.addr1.eth = gc.funds[0].balance;
+    //     childObject.addr2.eth = gc.funds[1].balance;
+    //     console.log(childObject);
+    // };
+
     return (
         <ContractContext.Provider
             value={{
@@ -36,6 +60,7 @@ export const ContractContextProvider = (props) => {
                 current,
                 setCurrent,
                 connect,
+                childObject,
             }}
         >
             {props.children}

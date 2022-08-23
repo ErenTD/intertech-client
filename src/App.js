@@ -32,7 +32,7 @@ const App = () => {
     );
 };
 
-const Landing = (props) => {
+const Landing = () => {
     const { current } = useContext(ContractContext);
     return (
         <div>
