@@ -1,6 +1,7 @@
 import { Menu, Button } from "antd";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useContext } from "react";
+import { ContractContext } from "../contexts/ContractContext";
 
 function getItem(label, key, icon, type) {
     return {
@@ -18,6 +19,8 @@ const items = [
 ];
 
 const MenuBar = (props) => {
+    const { accountType, connect } = useContext(ContractContext);
+
     const navigate = useNavigate();
 
     const landingClickHandler = (e) => {
@@ -59,12 +62,12 @@ const MenuBar = (props) => {
                 mode="horizontal"
                 items={items}
             />
-            {props.connect !== undefined && (
-                <Button style={{ marginLeft: "1rem" }} onClick={props.connect}>
+            {accountType === 0 && (
+                <Button style={{ marginLeft: "1rem" }} onClick={connect}>
                     GİRİŞ YAP
                 </Button>
             )}
-            {props.typeChild && (
+            {accountType === 1 && (
                 <Button
                     style={{ marginLeft: "1rem" }}
                     onClick={childClickHandler}
@@ -72,7 +75,7 @@ const MenuBar = (props) => {
                     HESABIM
                 </Button>
             )}
-            {props.typeParent && (
+            {accountType === 2 && (
                 <Button
                     style={{ marginLeft: "1rem" }}
                     onClick={parentClickHandler}
@@ -80,7 +83,7 @@ const MenuBar = (props) => {
                     ÇOCUKLAR
                 </Button>
             )}
-            {props.typeAdmin && (
+            {accountType === 3 && (
                 <Button
                     style={{ marginLeft: "1rem" }}
                     onClick={adminClickHandler}

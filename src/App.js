@@ -1,90 +1,45 @@
-import React, { useState } from "react";
-import { ethers } from "ethers";
+import React, { useState, useContext } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
 import ChildPage from "./pages/ChildPage";
-import ParentDeposit from"./pages/ParentDeposit";
+import ParentDeposit from "./pages/ParentDeposit";
 import MenuBar from "./components/MenuBar";
 import FooterBar from "./components/FooterBar";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 
+import {
+    ContractContextProvider,
+    ContractContext,
+} from "./contexts/ContractContext";
 
-const provider = new ethers.providers.Web3Provider(window.ethereum);
+//DELETE ME LATER
+let glbsc;
 
 const App = () => {
     const [current, setCurrent] = useState("sub1");
-    const [userType, setUserType] = useState(0);
+    //DELETE ME LATER
+    glbsc = setCurrent;
 
     const onClick = (e) => {
         // console.log("click", e);
         setCurrent(e.key);
     };
 
-    const connect = async () => {
-        await provider.send("eth_requestAccounts", []);
-    };
-
-    // DELETE AFTER DEVELOPMENT (TEMP LINKS)
-    const ss0 = () => {
-        setUserType(0);
-        setCurrent("sub1");
-    };
-    const ss1 = () => {
-        setUserType(1);
-        setCurrent("sub4");
-    };
-    const ss2 = () => {
-        setUserType(2);
-        setCurrent("sub4");
-    };
-    const ss3 = () => {
-        setUserType(3);
-        setCurrent("sub4");
-    };
-    // END OF DELETE AFTER DEVELOPMENT AREA
-
     return (
         <div>
-            {userType === 0 && (
-                <MenuBar
-                    onClick={onClick}
-                    current={current}
-                    connect={connect}
-                />
-            )}
-            {userType === 1 && (
-                <MenuBar onClick={onClick} current={current} typeChild />
-            )}
-            {userType === 2 && (
-                <MenuBar onClick={onClick} current={current} typeParent />
-            )}
-            {userType === 3 && (
-                <MenuBar onClick={onClick} current={current} typeAdmin />
-            )}
-            <Routes>
-                <Route path="/" element={<Landing current={current} />} />
-                <Route path="child" element={<Child />} />
-                <Route path="parent" element={<Parent />} />
-                <Route path="admin" element={<Admin />} />
-            </Routes>
-            <FooterBar />
-            {/* DELETE AFTER DEVELOPMENT (TEMP LINKS) */}
-            Temporary Links:
-            <Link to="/" onClick={ss0}>
-                Home
-            </Link>
-            <Link to="child" onClick={ss1}>
-                Child
-            </Link>
-            <Link to="parent" onClick={ss2}>
-                Parent
-            </Link>
-            <Link to="admin" onClick={ss3}>
-                Admin
-            </Link>
-            {/* END OF DELETE AFTER DEVELOPMENT AREA */}
+            <ContractContextProvider>
+                <MenuBar onClick={onClick} />
+                <Routes>
+                    <Route path="/" element={<Landing current={current} />} />
+                    <Route path="child" element={<Child />} />
+                    <Route path="parent" element={<Parent />} />
+                    <Route path="admin" element={<Admin />} />
+                </Routes>
+                <FooterBar />
+                <Temp />
+            </ContractContextProvider>
         </div>
     );
 };
@@ -104,11 +59,52 @@ const Child = () => {
 };
 
 const Parent = () => {
-    return <ParentDeposit/>;
+    return <ParentDeposit />;
 };
 
 const Admin = () => {
     return <div>TODO: Admin Page</div>;
+};
+
+//DELETE ME LATER
+const Temp = () => {
+    const { setAccountType } = useContext(ContractContext);
+    const setCurrent = glbsc;
+
+    const ss0 = () => {
+        setAccountType(0);
+        setCurrent("sub1");
+    };
+    const ss1 = () => {
+        setAccountType(1);
+        setCurrent("sub4");
+    };
+    const ss2 = () => {
+        setAccountType(2);
+        setCurrent("sub4");
+    };
+    const ss3 = () => {
+        setAccountType(3);
+        setCurrent("sub4");
+    };
+
+    return (
+        <>
+            Temporary Links:
+            <Link to="/" onClick={ss0}>
+                Home
+            </Link>
+            <Link to="child" onClick={ss1}>
+                Child
+            </Link>
+            <Link to="parent" onClick={ss2}>
+                Parent
+            </Link>
+            <Link to="admin" onClick={ss3}>
+                Admin
+            </Link>
+        </>
+    );
 };
 
 export default App;
