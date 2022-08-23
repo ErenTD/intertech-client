@@ -10,12 +10,11 @@ const { Footer } = Layout;
 
 const FooterBar = () => {
     return (
-        <Footer style={{ marginTop: "5rem", position: "fixed",
-        padding: "10px 10px 0px 10px",
-        bottom: "0",
-        width: "100%",
-        marginBottom:"2rem"
-}}>
+        <Footer
+            style={{
+                marginTop: "5rem",
+            }}
+        >
             <div
                 style={{
                     display: "flex",

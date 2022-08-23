@@ -16,7 +16,14 @@ import {
 
 const App = () => {
     return (
-        <div>
+        <div
+            style={{
+                display: "flex",
+                minHeight: "100vh",
+                flexDirection: "column",
+                justifyContent: "space-between",
+            }}
+        >
             <ContractContextProvider>
                 <MenuBar />
                 <Routes>
@@ -25,8 +32,8 @@ const App = () => {
                     <Route path="parent" element={<Parent />} />
                     <Route path="admin" element={<Admin />} />
                 </Routes>
-                <FooterBar />
                 <Temp />
+                <FooterBar />
             </ContractContextProvider>
         </div>
     );
@@ -77,7 +84,7 @@ const Temp = () => {
     };
 
     return (
-        <>
+        <div>
             Temporary Links:
             <Link to="/" onClick={ss0}>
                 Home
@@ -91,7 +98,7 @@ const Temp = () => {
             <Link to="admin" onClick={ss3}>
                 Admin
             </Link>
-        </>
+        </div>
     );
 };
 
