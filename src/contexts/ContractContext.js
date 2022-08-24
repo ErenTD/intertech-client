@@ -34,6 +34,14 @@ export const ContractContextProvider = (props) => {
     const navigate = useNavigate();
     let address;
 
+    const fetchExchangeRate = async () => {
+        const response = await fetch(
+            "https://api.coinbase.com/v2/exchange-rates?currency=ETH"
+        );
+        const data = await response.json();
+        return Number(data.data.rates.USD);
+    };
+
     const connect = async () => {
         await provider.send("eth_requestAccounts", []);
         address = await signer.getAddress();
@@ -52,6 +60,7 @@ export const ContractContextProvider = (props) => {
     };
 
     const generateChildList = async () => {
+        const rate = await fetchExchangeRate();
         const cl = await contractWithSigner.getChildren();
         const newChildList = [];
         for (let i = 0; i < cl.length; i++) {
@@ -61,8 +70,8 @@ export const ContractContextProvider = (props) => {
                 age: Date.now() / 1000 - cl[i].birthDate,
                 addr1: {
                     address: address,
-                    eth: cl[i].balance.toString(),
-                    usd: "TODO",
+                    eth: ethers.utils.formatEther(cl[i].balance),
+                    usd: Number(ethers.utils.formatEther(cl[i].balance)) * rate,
                 },
                 addr2: {
                     address: "N/A",
@@ -75,25 +84,32 @@ export const ContractContextProvider = (props) => {
     };
 
     const generateChildObject = async () => {
+        const rate = await fetchExchangeRate();
         const co = await contractWithSigner.getChild();
-        console.log(co);
         setChildObject({
             name: co.name,
             address: co.childAddress,
             age: Date.now() / 1000 - co.birthDate,
             addr1: {
                 address: co.funds[0].parentAddress,
-                eth: co.funds[0].balance.toString(),
-                usd: "TODO",
+                eth: ethers.utils.formatEther(co.funds[0].balance),
+                usd:
+                    Number(ethers.utils.formatEther(co.funds[0].balance)) *
+                    rate,
             },
             addr2: {
                 address:
                     co.funds.length > 1 ? co.funds[1].parentAddress : "N/A",
                 eth:
                     co.funds.length > 1
-                        ? co.funds[1].balance.toString()
+                        ? ethers.utils.formatEther(co.funds[1].balance)
                         : "N/A",
-                usd: "TODO",
+                usd:
+                    co.funds.length > 1
+                        ? Number(
+                              ethers.utils.formatEther(co.funds[0].balance)
+                          ) * rate
+                        : "N/A",
             },
         });
     };
