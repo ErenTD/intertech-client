@@ -9,9 +9,14 @@ const ParentModal = (props) => {
     };
 
     const [componentSize, setComponentSize] = useState("default");
+    const [form] = Form.useForm();
 
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
+    };
+
+    const onSubmit = (values) => {
+        console.log(values);
     };
 
     return (
@@ -47,13 +52,15 @@ const ParentModal = (props) => {
                 }}
                 onValuesChange={onFormLayoutChange}
                 size={componentSize}
+                form={form}
+                onFinish={onSubmit}
             >
                 <Form.Item wrapperCol={{ offset: 4, span: 12 }}>
                     <InputNumber style={inputStyle} />
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
-                    <Button style={inputStyle}>
+                    <Button style={inputStyle} htmlType="submit">
                         {props.action === "Para Çekme"
                             ? "Para Çek"
                             : "Para Yatır"}

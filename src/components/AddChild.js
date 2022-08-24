@@ -8,29 +8,36 @@ import {
     Row,
     Modal,
 } from "antd";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ContractContext } from "../contexts/ContractContext";
 import "antd/dist/antd.min.css";
 
 const AddChild = (props) => {
+    const { addChild } = useContext(ContractContext);
     const [componentSize, setComponentSize] = useState("default");
+    const [form] = Form.useForm();
 
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
-    };
-
-    const handleOk = () => {
-        props.setIsModalVisible(false);
     };
 
     const handleCancel = () => {
         props.setIsModalVisible(false);
     };
 
+    const onSubmit = (values) => {
+        addChild(values);
+    };
+
     return (
         <Modal
             visible={props.isModalVisible}
-            onOk={handleOk}
             onCancel={handleCancel}
+            footer={[
+                <Button key="back" onClick={handleCancel}>
+                    İptal
+                </Button>,
+            ]}
         >
             <Row
                 type="flex"
@@ -60,21 +67,57 @@ const AddChild = (props) => {
                         }}
                         onValuesChange={onFormLayoutChange}
                         size={componentSize}
+                        form={form}
+                        onFinish={onSubmit}
                     >
-                        <Form.Item label="İsim/Soyisim">
+                        <Form.Item
+                            label="İsim/Soyisim"
+                            name="name"
+                            rules={[
+                                {
+                                    required: true,
+                                },
+                            ]}
+                        >
                             <Input style={inputStyle} />
                         </Form.Item>
-                        <Form.Item label="Cüzdan Adresi">
+                        <Form.Item
+                            label="Cüzdan Adresi"
+                            name="address"
+                            rules={[
+                                {
+                                    required: true,
+                                },
+                            ]}
+                        >
                             <Input style={inputStyle} />
                         </Form.Item>
-                        <Form.Item label="Doğum Günü">
+                        <Form.Item
+                            label="Doğum Günü"
+                            name="birthdate"
+                            rules={[
+                                {
+                                    required: true,
+                                },
+                            ]}
+                        >
                             <DatePicker style={inputStyle} />
                         </Form.Item>
-                        <Form.Item label="Eth Miktarı">
+                        <Form.Item
+                            label="Eth Miktarı"
+                            name="balance"
+                            rules={[
+                                {
+                                    required: true,
+                                },
+                            ]}
+                        >
                             <InputNumber style={inputStyle} />
                         </Form.Item>
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                            <Button type="primary">Kaydet</Button>
+                            <Button type="primary" htmlType="submit">
+                                Kaydet
+                            </Button>
                         </Form.Item>
                     </Form>
                 </Card>

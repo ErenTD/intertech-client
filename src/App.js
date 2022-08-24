@@ -14,10 +14,13 @@ import {
     ContractContext,
 } from "./contexts/ContractContext";
 
+// import background from "./media/bgimg.svg";
+
 const App = () => {
     return (
         <div
             style={{
+                // backgroundImage: `url(${background})`,
                 display: "flex",
                 minHeight: "100vh",
                 flexDirection: "column",

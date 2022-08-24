@@ -137,8 +137,8 @@ const InfoCard = (props) => {
                 <Progress percent={progress} showInfo={false} />
                 <p>
                     {props.person.name}'in 18 yaşına gelmesine bu günden
-                    itibaren {years} yıl {days} gün var. Ahmet'in yatırımlarını
-                    yukarıdaki özet tablosunda görebilirsiniz.
+                    itibaren {years} yıl {days} gün var. {props.person.name}'in
+                    yatırımlarını yukarıdaki özet tablosunda görebilirsiniz.
                 </p>
             </div>
         </Card>
