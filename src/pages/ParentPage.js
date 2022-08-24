@@ -1,5 +1,5 @@
 import InfoCard from "../components/InfoCard";
-import AddChildPage from "./AddChildPage";
+import AddChild from "../components/AddChild";
 import { Button } from "antd";
 import Slider from "react-slick";
 import React, { useState } from "react";
@@ -145,7 +145,7 @@ const Child = [
     },
 ];
 
-const ParentDeposit = () => {
+const ParentPage = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const interact = () => {
         setIsModalVisible(true);
@@ -164,7 +164,7 @@ const ParentDeposit = () => {
             >
                 <Button onClick={interact}>ÇOCUK EKLE</Button>
             </div>
-            <AddChildPage
+            <AddChild
                 isModalVisible={isModalVisible}
                 setIsModalVisible={setIsModalVisible}
             />
@@ -186,4 +186,4 @@ const ParentDeposit = () => {
         </>
     );
 };
-export default ParentDeposit;
+export default ParentPage;

@@ -1,7 +1,6 @@
 import { Avatar, Button, Card, Progress } from "antd";
-import React,{useState} from "react";
-import ParentComp from "../pages/ParentComp";
-
+import React, { useState } from "react";
+import ParentModal from "./ParentModal";
 
 const InfoCard = (props) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -13,7 +12,9 @@ const InfoCard = (props) => {
     const progress = Math.trunc(
         100 - ((568036800 - props.person.age) / 568036800) * 100
     );
-    const interact=()=> {setIsModalVisible(true);};
+    const interact = () => {
+        setIsModalVisible(true);
+    };
     return (
         <Card
             style={{
@@ -22,7 +23,11 @@ const InfoCard = (props) => {
             }}
             cover={
                 <div>
-                    <ParentComp isModalVisible={isModalVisible} setIsModalVisible= {setIsModalVisible} childname={props.person.name} />
+                    <ParentModal
+                        isModalVisible={isModalVisible}
+                        setIsModalVisible={setIsModalVisible}
+                        childname={props.person.name}
+                    />
                     <div
                         style={{
                             overflow: "hidden",
@@ -58,7 +63,11 @@ const InfoCard = (props) => {
                                     marginRight: "auto",
                                 }}
                             >
-                                <Button type="primary" onClick={interact} islem={"Para Çekme"}>
+                                <Button
+                                    type="primary"
+                                    onClick={interact}
+                                    islem={"Para Çekme"}
+                                >
                                     Para Çek
                                 </Button>
                             </div>
@@ -68,7 +77,12 @@ const InfoCard = (props) => {
                                     marginRight: "2rem",
                                 }}
                             >
-                                <Button type="primary" onClick={interact} islem={"Para Yatırma"}  danger>
+                                <Button
+                                    type="primary"
+                                    onClick={interact}
+                                    islem={"Para Yatırma"}
+                                    danger
+                                >
                                     Para Yatır
                                 </Button>
                             </div>

@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
 import ChildPage from "./pages/ChildPage";
-import ParentDeposit from "./pages/ParentDeposit";
+import ParentPage from "./pages/ParentPage";
 import MenuBar from "./components/MenuBar";
 import FooterBar from "./components/FooterBar";
 import AboutPage from "./pages/AboutPage";
@@ -55,7 +55,7 @@ const Child = () => {
 };
 
 const Parent = () => {
-    return <ParentDeposit />;
+    return <ParentPage />;
 };
 
 const Admin = () => {

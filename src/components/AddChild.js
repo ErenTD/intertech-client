@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import "antd/dist/antd.min.css";
 
-const AddChildPage = (props) => {
+const AddChild = (props) => {
     const [componentSize, setComponentSize] = useState("default");
 
     const onFormLayoutChange = ({ size }) => {
@@ -87,4 +87,4 @@ const inputStyle = {
     width: "300px",
 };
 
-export default AddChildPage;
+export default AddChild;

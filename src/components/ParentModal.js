@@ -1,8 +1,7 @@
 import { Button, Modal, Form, InputNumber } from "antd";
 import React, { useState } from "react";
 
-const ParentComp = (props) => {
-   
+const ParentModal = (props) => {
     const handleCancel = () => {
         props.setIsModalVisible(false);
     };
@@ -13,11 +12,9 @@ const ParentComp = (props) => {
         setComponentSize(size);
     };
     return (
-        <Modal 
-                    
-        title={props.islem} 
+        <Modal
+            title={props.islem}
             visible={props.isModalVisible}
-          
             onCancel={handleCancel}
         >
             {props.childname}
@@ -35,7 +32,7 @@ const ParentComp = (props) => {
                 onValuesChange={onFormLayoutChange}
                 size={componentSize}
             >
-                <Form.Item wrapperCol={{ offset: 4, span: 12 }} >
+                <Form.Item wrapperCol={{ offset: 4, span: 12 }}>
                     <InputNumber style={inputStyle} />
                 </Form.Item>
 
@@ -51,4 +48,4 @@ const inputStyle = {
     width: "300px",
 };
 
-export default ParentComp;
+export default ParentModal;
