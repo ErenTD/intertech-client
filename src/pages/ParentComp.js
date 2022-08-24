@@ -2,10 +2,7 @@ import { Button, Modal, Form, InputNumber } from "antd";
 import React, { useState } from "react";
 
 const ParentComp = (props) => {
-    const handleOk = () => {
-        props.setIsModalVisible(false);
-    };
-
+   
     const handleCancel = () => {
         props.setIsModalVisible(false);
     };
@@ -15,20 +12,21 @@ const ParentComp = (props) => {
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
     };
-
     return (
-        <Modal
-            title={props.islem}
+        <Modal 
+                    
+        title={props.islem} 
             visible={props.isModalVisible}
-            onOk={handleOk}
+          
             onCancel={handleCancel}
         >
+            {props.childname}
             <Form
                 labelCol={{
-                    span: 4,
+                    span: 1,
                 }}
                 wrapperCol={{
-                    span: 14,
+                    span: 10,
                 }}
                 layout="horizontal"
                 initialValues={{
@@ -37,16 +35,20 @@ const ParentComp = (props) => {
                 onValuesChange={onFormLayoutChange}
                 size={componentSize}
             >
-                <Form.Item>
-                    <InputNumber />
+                <Form.Item wrapperCol={{ offset: 4, span: 12 }} >
+                    <InputNumber style={inputStyle} />
                 </Form.Item>
 
-                <Form.Item>
-                    <Button>Button</Button>
+                <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
+                    <Button style={inputStyle}>Para Çek</Button>
                 </Form.Item>
             </Form>
         </Modal>
     );
+};
+
+const inputStyle = {
+    width: "300px",
 };
 
 export default ParentComp;

@@ -22,7 +22,7 @@ const InfoCard = (props) => {
             }}
             cover={
                 <div>
-                    <ParentComp isModalVisible={isModalVisible} setIsModalVisible= {setIsModalVisible} />
+                    <ParentComp isModalVisible={isModalVisible} setIsModalVisible= {setIsModalVisible} childname={props.person.name} />
                     <div
                         style={{
                             overflow: "hidden",
