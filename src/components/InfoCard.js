@@ -4,6 +4,7 @@ import ParentModal from "./ParentModal";
 
 const InfoCard = (props) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [action, setAction] = useState("");
 
     const years = Math.trunc((568036800 - props.person.age) / 31536000);
     const days = Math.trunc(
@@ -12,9 +13,18 @@ const InfoCard = (props) => {
     const progress = Math.trunc(
         100 - ((568036800 - props.person.age) / 568036800) * 100
     );
-    const interact = () => {
+
+    let actionSetter;
+
+    const interactWithdraw = () => {
+        setAction("Para Çekme");
         setIsModalVisible(true);
     };
+    const interactDeposit = () => {
+        setAction("Para Yatırma");
+        setIsModalVisible(true);
+    };
+
     return (
         <Card
             style={{
@@ -27,6 +37,7 @@ const InfoCard = (props) => {
                         isModalVisible={isModalVisible}
                         setIsModalVisible={setIsModalVisible}
                         childname={props.person.name}
+                        action={action}
                     />
                     <div
                         style={{
@@ -65,8 +76,7 @@ const InfoCard = (props) => {
                             >
                                 <Button
                                     type="primary"
-                                    onClick={interact}
-                                    islem={"Para Çekme"}
+                                    onClick={interactWithdraw}
                                 >
                                     Para Çek
                                 </Button>
@@ -79,8 +89,7 @@ const InfoCard = (props) => {
                             >
                                 <Button
                                     type="primary"
-                                    onClick={interact}
-                                    islem={"Para Yatırma"}
+                                    onClick={interactDeposit}
                                     danger
                                 >
                                     Para Yatır

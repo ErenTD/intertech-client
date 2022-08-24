@@ -1,5 +1,7 @@
-import { Button, Modal, Form, InputNumber } from "antd";
+import { Button, Modal, Form, InputNumber, Typography } from "antd";
 import React, { useState } from "react";
+
+const { Title } = Typography;
 
 const ParentModal = (props) => {
     const handleCancel = () => {
@@ -11,13 +13,27 @@ const ParentModal = (props) => {
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
     };
+
     return (
         <Modal
-            title={props.islem}
+            title={props.action}
             visible={props.isModalVisible}
             onCancel={handleCancel}
+            footer={[
+                <Button key="back" onClick={handleCancel}>
+                    İptal
+                </Button>,
+            ]}
         >
-            {props.childname}
+            <Title
+                level={3}
+                style={{
+                    marginBottom: "1rem",
+                    textAlign: "center",
+                }}
+            >
+                {props.childname}
+            </Title>
             <Form
                 labelCol={{
                     span: 1,
