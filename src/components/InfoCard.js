@@ -14,8 +14,6 @@ const InfoCard = (props) => {
         100 - ((568036800 - props.person.age) / 568036800) * 100
     );
 
-    let actionSetter;
-
     const interactWithdraw = () => {
         setAction("Para Çekme");
         setIsModalVisible(true);

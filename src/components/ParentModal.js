@@ -53,7 +53,11 @@ const ParentModal = (props) => {
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
-                    <Button style={inputStyle}>Para Çek</Button>
+                    <Button style={inputStyle}>
+                        {props.action === "Para Çekme"
+                            ? "Para Çek"
+                            : "Para Yatır"}
+                    </Button>
                 </Form.Item>
             </Form>
         </Modal>
