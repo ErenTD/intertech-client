@@ -8,10 +8,12 @@ const AHMET = {
     address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
     age: 345200000,
     addr1: {
+        address: "0xfC9F7e34782B70c3096133eAD13BD54c863051D4",
         eth: 10.2665,
         usd: 1026.65,
     },
     addr2: {
+        address: "0x7e1b65998b60Ce19b09373C82e30171C6D2dC0d9",
         eth: 20.365,
         usd: 244.38,
     },

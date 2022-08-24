@@ -20,10 +20,12 @@ export const ContractContextProvider = (props) => {
         address: "-",
         age: 0,
         addr1: {
+            address: "-",
             eth: "0",
             usd: "0",
         },
         addr2: {
+            address: "-",
             eth: "0",
             usd: "0",
         },
@@ -58,10 +60,12 @@ export const ContractContextProvider = (props) => {
                 address: cl[i].childAddress,
                 age: Date.now() / 1000 - cl[i].birthDate,
                 addr1: {
+                    address: address,
                     eth: cl[i].balance.toString(),
                     usd: "TODO",
                 },
                 addr2: {
+                    address: "N/A",
                     eth: "HIDDEN",
                     usd: "HIDDEN",
                 },
@@ -78,10 +82,13 @@ export const ContractContextProvider = (props) => {
             address: co.childAddress,
             age: Date.now() / 1000 - co.birthDate,
             addr1: {
+                address: co.funds[0].parentAddress,
                 eth: co.funds[0].balance.toString(),
                 usd: "TODO",
             },
             addr2: {
+                address:
+                    co.funds.length > 1 ? co.funds[1].parentAddress : "N/A",
                 eth:
                     co.funds.length > 1
                         ? co.funds[1].balance.toString()
@@ -97,7 +104,6 @@ export const ContractContextProvider = (props) => {
             values.name,
             values.birthdate.unix()
         );
-        // await contractwithSigner.sendBalance(values.address, values.balance);
         generateChildList();
         console.log(values.address, values.name, values.birthdate.unix());
     };

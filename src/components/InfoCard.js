@@ -119,12 +119,36 @@ const InfoCard = (props) => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Adres 1</td>
+                            <td>{`${props.person.addr1.address.substr(
+                                0,
+                                5
+                            )}...${props.person.addr1.address.substr(
+                                39,
+                                42
+                            )}`}</td>
                             <td>{props.person.addr1.eth}</td>
                             <td>${props.person.addr1.usd}</td>
                         </tr>
-                        <tr>
-                            <td>Adres 2</td>
+                        <tr
+                            style={{
+                                display: `${
+                                    props.person.addr2.address === "N/A"
+                                        ? "none"
+                                        : "table-row"
+                                }`,
+                            }}
+                        >
+                            <td>
+                                {props.person.addr2.address !== "N/A"
+                                    ? `${props.person.addr2.address.substr(
+                                          0,
+                                          5
+                                      )}...${props.person.addr2.address.substr(
+                                          39,
+                                          42
+                                      )}`
+                                    : "N/A"}
+                            </td>
                             <td>{props.person.addr2.eth}</td>
                             <td>${props.person.addr2.usd}</td>
                         </tr>

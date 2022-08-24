@@ -1,13 +1,4 @@
-import {
-    Button,
-    DatePicker,
-    Form,
-    Input,
-    InputNumber,
-    Card,
-    Row,
-    Modal,
-} from "antd";
+import { Button, DatePicker, Form, Input, Card, Row, Modal } from "antd";
 import React, { useState, useContext } from "react";
 import { ContractContext } from "../contexts/ContractContext";
 import "antd/dist/antd.min.css";
@@ -102,17 +93,6 @@ const AddChild = (props) => {
                             ]}
                         >
                             <DatePicker style={inputStyle} />
-                        </Form.Item>
-                        <Form.Item
-                            label="Eth Miktarı"
-                            name="balance"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <InputNumber style={inputStyle} />
                         </Form.Item>
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                             <Button type="primary" htmlType="submit">
