@@ -174,6 +174,19 @@ export const abi = [
         type: "function",
     },
     {
+        inputs: [],
+        name: "getParents",
+        outputs: [
+            {
+                internalType: "address[]",
+                name: "",
+                type: "address[]",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
         inputs: [
             {
                 internalType: "address",
@@ -194,7 +207,65 @@ export const abi = [
     },
     {
         inputs: [],
+        name: "howmanyChilds",
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "howmanyChildsAbove18",
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "howmanyParents",
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
         name: "owner",
+        outputs: [
+            {
+                internalType: "address",
+                name: "",
+                type: "address",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
+        name: "parentList",
         outputs: [
             {
                 internalType: "address",
@@ -242,6 +313,19 @@ export const abi = [
         name: "sendBalance",
         outputs: [],
         stateMutability: "payable",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "totalMoney",
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+            },
+        ],
+        stateMutability: "view",
         type: "function",
     },
     {

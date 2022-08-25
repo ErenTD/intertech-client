@@ -15,6 +15,7 @@ export const ContractContextProvider = (props) => {
     const [accountType, setAccountType] = useState(0);
     const [current, setCurrent] = useState("sub1");
     const [ChildList, setChildList] = useState([]);
+    const [ParentList, setParentList] = useState([]);
     const [childObject, setChildObject] = useState({
         name: "-",
         address: "-",
@@ -54,7 +55,10 @@ export const ContractContextProvider = (props) => {
             setAccountType(2);
             generateChildList();
         }
-        if (accountTypeString === "admin") setAccountType(3);
+        if (accountTypeString === "owner") {
+            setAccountType(3);
+            generateParentList();
+        }
         navigate(`/${accountTypeString}`);
         setCurrent("sub4");
     };
@@ -81,6 +85,29 @@ export const ContractContextProvider = (props) => {
             });
         }
         setChildList(newChildList);
+    };
+
+    const generateParentList = async () => {
+        // const rate = await fetchExchangeRate();
+        const pl = await contractWithSigner.getParents();
+        const newParentList = [];
+        for (let i = 0; i < pl.length; i++) {
+            newParentList.push({
+                name: `Ebeveyn ${i + 1}`,
+                address: pl[i],
+                addr1: {
+                    address: "TODO",
+                    eth: "TODO",
+                    usd: "TODO",
+                },
+                addr2: {
+                    address: "TODO",
+                    eth: "TODO",
+                    usd: "TODO",
+                },
+            });
+        }
+        setParentList(newParentList);
     };
 
     const generateChildObject = async () => {
@@ -153,6 +180,7 @@ export const ContractContextProvider = (props) => {
                 connect,
                 childObject,
                 ChildList,
+                ParentList,
                 addChild,
                 sendMoney,
                 unsendMoney,

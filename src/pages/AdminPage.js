@@ -1,111 +1,19 @@
 import ParentCard from "../components/ParentCard";
 import Slider from "react-slick";
-import React from "react";
-
-const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-};
-
-const Parent = [
-    {
-        name: "Ahmet",
-        address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
-        age: 1325419200,
-        addr1: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-        addr2: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-    },
-
-    {
-        name: "Fatma",
-        address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
-        age: 1325419200,
-        addr1: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-        addr2: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-    },
-    {
-        name: "Dilara",
-        address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
-        age: 1325419200,
-        addr1: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-        addr2: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-    },
-    {
-        name: "Meryem",
-        address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
-        age: 1325419200,
-        addr1: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-        addr2: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-    },
-    {
-        name: "Mahir",
-        address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
-        age: 1325419200,
-        addr1: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-        addr2: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-    },
-    {
-        name: "Nergiz",
-        address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
-        age: 1325419200,
-        addr1: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-        addr2: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-    },
-    {
-        name: "Kaan",
-        address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
-        age: 1325419200,
-        addr1: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-        addr2: {
-            eth: 10.2665,
-            usd: 1026.65,
-        },
-    },
-];
+import React, { useContext } from "react";
+import { ContractContext } from "../contexts/ContractContext";
 
 const AdminPage = () => {
+    const { ParentList } = useContext(ContractContext);
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: ParentList.length < 3 ? ParentList.length : 3,
+        slidesToScroll: 3,
+    };
+
     return (
         <>
             <div
@@ -116,8 +24,8 @@ const AdminPage = () => {
                 }}
             >
                 <Slider {...settings}>
-                    {Parent.map((parent) => (
-                        <div>
+                    {ParentList.map((parent, index) => (
+                        <div key={index}>
                             <ParentCard person={parent} buttons />
                         </div>
                     ))}
@@ -149,11 +57,11 @@ const AdminPage = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>8</td>
-                            <td>35</td>
-                            <td></td>
-                            <td></td>
-                            <td>22</td>
+                            <td>{ParentList.length}</td>
+                            <td>TODO</td>
+                            <td>TODO</td>
+                            <td>TODO</td>
+                            <td>TODO</td>
                         </tr>
                     </tbody>
                 </table>

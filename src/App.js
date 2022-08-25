@@ -34,7 +34,7 @@ const App = () => {
                     <Route path="/" element={<Landing />} />
                     <Route path="child" element={<Child />} />
                     <Route path="parent" element={<Parent />} />
-                    <Route path="admin" element={<Admin />} />
+                    <Route path="owner" element={<Admin />} />
                 </Routes>
                 <Temp />
                 <FooterBar />
@@ -99,7 +99,7 @@ const Temp = () => {
             <Link to="parent" onClick={ss2}>
                 Parent
             </Link>
-            <Link to="admin" onClick={ss3}>
+            <Link to="owner" onClick={ss3}>
                 Admin
             </Link>
         </div>

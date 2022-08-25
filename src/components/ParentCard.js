@@ -77,12 +77,24 @@ const ParentCard = (props) => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Çocuk 1</td>
+                            <td>{`${props.person.addr1.address.substr(
+                                0,
+                                5
+                            )}...${props.person.addr1.address.substr(
+                                39,
+                                42
+                            )}`}</td>
                             <td>{props.person.addr1.eth}</td>
                             <td>${props.person.addr1.usd}</td>
                         </tr>
                         <tr>
-                            <td>Çocuk 2</td>
+                            <td>{`${props.person.addr2.address.substr(
+                                0,
+                                5
+                            )}...${props.person.addr2.address.substr(
+                                39,
+                                42
+                            )}`}</td>
                             <td>{props.person.addr2.eth}</td>
                             <td>${props.person.addr2.usd}</td>
                         </tr>
@@ -92,19 +104,28 @@ const ParentCard = (props) => {
                     <thead>
                         <tr style={{ textDecoration: "underline" }}>
                             <th>Toplam Çekilen Miktar</th>
-
                             <th>Toplam</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Çocuk 1</td>
-
+                            <td>{`${props.person.addr1.address.substr(
+                                0,
+                                5
+                            )}...${props.person.addr1.address.substr(
+                                39,
+                                42
+                            )}`}</td>
                             <td>${props.person.addr1.usd}</td>
                         </tr>
                         <tr>
-                            <td>Çocuk 2</td>
-
+                            <td>{`${props.person.addr2.address.substr(
+                                0,
+                                5
+                            )}...${props.person.addr2.address.substr(
+                                39,
+                                42
+                            )}`}</td>
                             <td>${props.person.addr2.usd}</td>
                         </tr>
                     </tbody>
@@ -119,13 +140,23 @@ const ParentCard = (props) => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Çocuk 1</td>
-
+                            <td>{`${props.person.addr1.address.substr(
+                                0,
+                                5
+                            )}...${props.person.addr1.address.substr(
+                                39,
+                                42
+                            )}`}</td>
                             <td>${props.person.addr1.usd}</td>
                         </tr>
                         <tr>
-                            <td>Çocuk 2</td>
-
+                            <td>{`${props.person.addr2.address.substr(
+                                0,
+                                5
+                            )}...${props.person.addr2.address.substr(
+                                39,
+                                42
+                            )}`}</td>
                             <td>${props.person.addr2.usd}</td>
                         </tr>
                     </tbody>
