@@ -83,7 +83,7 @@ const WithdrawCard = (props) => {
                     name="basic"
                     form={form}
                     initialValues={{
-                        balance: `Çekilebilir Bakiyeniz: 12 ETH`,
+                        balance: "Çekilebilir Bakiyeniz:",
                         amount: 0,
                     }}
                     onFinish={onFinish}
