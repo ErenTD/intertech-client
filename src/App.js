@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
 import ChildPage from "./pages/ChildPage";
@@ -36,7 +36,6 @@ const App = () => {
                     <Route path="parent" element={<Parent />} />
                     <Route path="owner" element={<Admin />} />
                 </Routes>
-                <Temp />
                 <FooterBar />
             </ContractContextProvider>
         </div>
@@ -64,46 +63,6 @@ const Parent = () => {
 
 const Admin = () => {
     return <AdminPage />;
-};
-
-//DELETE ME LATER
-const Temp = () => {
-    const { setAccountType, setCurrent } = useContext(ContractContext);
-
-    const ss0 = () => {
-        setAccountType(0);
-        setCurrent("sub1");
-    };
-    const ss1 = () => {
-        setAccountType(1);
-        setCurrent("sub4");
-    };
-    const ss2 = () => {
-        setAccountType(2);
-        setCurrent("sub4");
-    };
-    const ss3 = () => {
-        setAccountType(3);
-        setCurrent("sub4");
-    };
-
-    return (
-        <div>
-            Temporary Links:
-            <Link to="/" onClick={ss0}>
-                Home
-            </Link>
-            <Link to="child" onClick={ss1}>
-                Child
-            </Link>
-            <Link to="parent" onClick={ss2}>
-                Parent
-            </Link>
-            <Link to="owner" onClick={ss3}>
-                Admin
-            </Link>
-        </div>
-    );
 };
 
 export default App;
