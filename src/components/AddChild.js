@@ -23,12 +23,12 @@ const AddChild = (props) => {
     return (
         <Modal
             visible={props.isModalVisible}
+            bodyStyle={{
+                backgroundImage: "linear-gradient(#fa8c16,#ffa940)",
+                opacity: "0.8",
+            }}
             onCancel={handleCancel}
-            footer={[
-                <Button key="back" onClick={handleCancel}>
-                    İptal
-                </Button>,
-            ]}
+            footer={null}
         >
             <Row
                 type="flex"
@@ -44,7 +44,7 @@ const AddChild = (props) => {
                     style={{
                         width: 600,
                         verticalAlign: "middle",
-                        backgroundImage: "linear-gradient(#0984E3,#F5F5F5)",
+                        backgroundColor: "#ffffff",
                         color: "#003C96",
                         borderRadius: 10,
                     }}
