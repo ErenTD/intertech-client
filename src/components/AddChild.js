@@ -130,6 +130,7 @@ const AddChild = (props) => {
                                     borderRadius: 10,
                                 }}
                                 type="primary"
+                                htmlType="submit"
                             >
                                 Kaydet
                             </Button>
