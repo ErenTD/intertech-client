@@ -53,17 +53,17 @@ const MenuBar = () => {
                 marginRight: "12%",
             }}
         >
-            <div id="background"></div>
-            <div id="bContent"></div>
             <Menu
                 onClick={landingClickHandler}
                 selectedKeys={[current]}
                 style={{
                     marginLeft: "auto",
                     marginRight: 0,
+                    backgroundColor: "rgba(0, 0, 0, 0)",
                 }}
                 mode="horizontal"
                 items={items}
+                theme="dark"
             />
             {accountType === 0 && (
                 <Button

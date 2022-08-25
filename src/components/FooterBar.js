@@ -13,13 +13,13 @@ const FooterBar = () => {
         <Footer
             style={{
                 marginTop: "5rem",
-                backgroundImage: "linear-gradient(#bde4ff,#f0faff)",
+                backgroundImage: "linear-gradient(#74B9FF,#d9d4d3)",
                 color: "#003C96",
             }}
         >
             <div
                 style={{
-                    backgroundImage: "linear-gradient(#bde4ff,#f0faff)",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
                     color: " #003C96",
                     display: "flex",
                     alignItems: "center",

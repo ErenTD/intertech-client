@@ -75,7 +75,14 @@ export const ContractContextProvider = (props) => {
                 addr1: {
                     address: address,
                     eth: ethers.utils.formatEther(cl[i].balance),
-                    usd: Number(ethers.utils.formatEther(cl[i].balance)) * rate,
+                    usd:
+                        Math.trunc(
+                            100 *
+                                Number(
+                                    ethers.utils.formatEther(cl[i].balance)
+                                ) *
+                                rate
+                        ) / 100,
                 },
                 addr2: {
                     address: "N/A",
@@ -121,8 +128,13 @@ export const ContractContextProvider = (props) => {
                 address: co.funds[0].parentAddress,
                 eth: ethers.utils.formatEther(co.funds[0].balance),
                 usd:
-                    Number(ethers.utils.formatEther(co.funds[0].balance)) *
-                    rate,
+                    Math.trunc(
+                        100 *
+                            Number(
+                                ethers.utils.formatEther(co.funds[0].balance)
+                            ) *
+                            rate
+                    ) / 100,
             },
             addr2: {
                 address:
@@ -133,9 +145,15 @@ export const ContractContextProvider = (props) => {
                         : "N/A",
                 usd:
                     co.funds.length > 1
-                        ? Number(
-                              ethers.utils.formatEther(co.funds[0].balance)
-                          ) * rate
+                        ? Math.trunc(
+                              100 *
+                                  Number(
+                                      ethers.utils.formatEther(
+                                          co.funds[0].balance
+                                      )
+                                  ) *
+                                  rate
+                          ) / 100
                         : "N/A",
             },
         });
@@ -147,7 +165,6 @@ export const ContractContextProvider = (props) => {
             values.name,
             values.birthdate.unix()
         );
-        generateChildList();
     };
 
     const sendMoney = async (address, amount) => {

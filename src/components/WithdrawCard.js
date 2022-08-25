@@ -39,8 +39,9 @@ const WithdrawCard = (props) => {
 
     return (
         <Card
+            bordered={false}
             style={{
-                backgroundImage: "linear-gradient(#0984E3,#F5F5F5)",
+                backgroundImage: "linear-gradient(#0984E3,#74B9FF)",
                 color: "black",
                 borderRadius: 100,
                 ...props.style,

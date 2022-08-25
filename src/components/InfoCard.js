@@ -25,8 +25,9 @@ const InfoCard = (props) => {
 
     return (
         <Card
+            bordered={false}
             style={{
-                backgroundImage: "linear-gradient(#0984E3,#bae7ff)",
+                backgroundImage: "linear-gradient(#0984E3,#74B9FF)",
                 color: "#ffffff",
                 borderRadius: 100,
                 ...props.style,
