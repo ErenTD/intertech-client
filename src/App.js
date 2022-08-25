@@ -4,6 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import ChildPage from "./pages/ChildPage";
 import ParentPage from "./pages/ParentPage";
+import AdminPage from "./pages/AdminPage";
 import MenuBar from "./components/MenuBar";
 import FooterBar from "./components/FooterBar";
 import AboutPage from "./pages/AboutPage";
@@ -62,7 +63,7 @@ const Parent = () => {
 };
 
 const Admin = () => {
-    return <div>TODO: Admin Page</div>;
+    return <AdminPage />;
 };
 
 //DELETE ME LATER

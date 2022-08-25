@@ -1,16 +1,7 @@
-import { Avatar, Card} from "antd";
-import React,{useState} from "react";
-import ParentComp from "../pages/ParentComp";
-
-
+import { Avatar, Card } from "antd";
+import React from "react";
 
 const ParentCard = (props) => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
-
-   
-   
-    
-
     return (
         <Card
             style={{
@@ -19,7 +10,6 @@ const ParentCard = (props) => {
             }}
             cover={
                 <div>
-                    <ParentComp isModalVisible={isModalVisible} setIsModalVisible= {setIsModalVisible} parentname={props.person.name} />
                     <div
                         style={{
                             overflow: "hidden",
@@ -54,17 +44,13 @@ const ParentCard = (props) => {
                                     marginLeft: "2rem",
                                     marginRight: "auto",
                                 }}
-                            >
-                                
-                            </div>
+                            ></div>
                             <div
                                 style={{
                                     marginLeft: "auto",
                                     marginRight: "2rem",
                                 }}
-                            >
-                                
-                            </div>
+                            ></div>
                         </div>
                     )}
                 </div>
@@ -106,19 +92,19 @@ const ParentCard = (props) => {
                     <thead>
                         <tr style={{ textDecoration: "underline" }}>
                             <th>Toplam Çekilen Miktar</th>
-                            
+
                             <th>Toplam</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Çocuk 1</td>
-                           
+
                             <td>${props.person.addr1.usd}</td>
                         </tr>
                         <tr>
                             <td>Çocuk 2</td>
-                           
+
                             <td>${props.person.addr2.usd}</td>
                         </tr>
                     </tbody>
@@ -127,27 +113,24 @@ const ParentCard = (props) => {
                     <thead>
                         <tr style={{ textDecoration: "underline" }}>
                             <th>Toplam Yatırılan Miktar</th>
-                            
+
                             <th>Toplam</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Çocuk 1</td>
-                           
+
                             <td>${props.person.addr1.usd}</td>
                         </tr>
                         <tr>
                             <td>Çocuk 2</td>
-                           
+
                             <td>${props.person.addr2.usd}</td>
                         </tr>
                     </tbody>
                 </table>
                 <br />
-            
-                
-              
             </div>
         </Card>
     );
