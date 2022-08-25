@@ -1,17 +1,40 @@
-import { Avatar, Card, Button, InputNumber, Form, Input } from "antd";
-import React from "react";
+import { Avatar, Card, Button, InputNumber, Form, Input, Select } from "antd";
+import React, { useContext } from "react";
+import { ContractContext } from "../contexts/ContractContext";
 
 const WithdrawCard = (props) => {
+    const { withdrawMoney } = useContext(ContractContext);
+    const [form] = Form.useForm();
+
     const onFinish = (values) => {
-        console.log("Success:", values);
+        withdrawMoney(values);
     };
 
-    const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
-    };
+    const onAddressChange = (value) => {
+        switch (value) {
+            case props.person.addr1.address:
+                form.setFieldsValue({
+                    balance: `Çekilebilir Bakiyeniz: ${
+                        props.person.age > 568036800
+                            ? props.person.addr1.eth
+                            : 0
+                    } ETH`,
+                });
+                return;
 
-    const onChange = (value) => {
-        console.log("changed", value);
+            case props.person.addr2.address:
+                form.setFieldsValue({
+                    balance: `Çekilebilir Bakiyeniz: ${
+                        props.person.age > 568036800
+                            ? props.person.addr2.eth
+                            : 0
+                    } ETH`,
+                });
+                return;
+
+            default:
+                return;
+        }
     };
 
     return (
@@ -58,47 +81,111 @@ const WithdrawCard = (props) => {
                 <br />
                 <Form
                     name="basic"
+                    form={form}
                     initialValues={{
-                        balance: `Çekilebilir Bakiyeniz: ${
-                            props.person.age > 568036800
-                                ? props.person.addr1.eth +
-                                  props.person.addr2.eth
-                                : 0
-                        } ETH`,
+                        balance: `Çekilebilir Bakiyeniz: 12 ETH`,
                         amount: 0,
                     }}
                     onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
                     autoComplete="off"
                 >
+                    <Form.Item label="Çekilecek Adres" name="address">
+                        <Select
+                            onChange={onAddressChange}
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Lütfen çekilecek adresi seçiniz!",
+                                },
+                            ]}
+                        >
+                            <Select.Option value={props.person.addr1.address}>
+                                {`${props.person.addr1.address.substr(
+                                    0,
+                                    5
+                                )}...${props.person.addr1.address.substr(
+                                    39,
+                                    42
+                                )}`}
+                            </Select.Option>
+                            {props.person.addr2.address !== "N/A" ? (
+                                <Select.Option
+                                    value={props.person.addr2.address}
+                                >
+                                    {`${props.person.addr2.address.substr(
+                                        0,
+                                        5
+                                    )}...${props.person.addr2.address.substr(
+                                        39,
+                                        42
+                                    )}`}
+                                </Select.Option>
+                            ) : null}
+                        </Select>
+                    </Form.Item>
                     <Form.Item name="balance">
                         <Input disabled />
                     </Form.Item>
 
                     <Form.Item
-                        name="amount"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Lütfen çekeceğiniz miktarı giriniz!",
-                            },
-                        ]}
+                        shouldUpdate={(prevValues, currentValues) =>
+                            prevValues.address !== currentValues.address
+                        }
                     >
-                        <InputNumber
-                            style={{
-                                width: 250,
-                            }}
-                            min="0"
-                            max={
-                                props.person.age > 568036800
-                                    ? props.person.addr1.eth +
-                                      props.person.addr2.eth
-                                    : 0
-                            }
-                            step="0.00000000000001"
-                            onChange={onChange}
-                            stringMode
-                        />
+                        {({ getFieldValue }) =>
+                            getFieldValue("address") ===
+                            props.person.addr1.address ? (
+                                <Form.Item
+                                    name="amount"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message:
+                                                "Lütfen çekeceğiniz miktarı giriniz!",
+                                        },
+                                    ]}
+                                >
+                                    <InputNumber
+                                        style={{
+                                            width: 250,
+                                        }}
+                                        min="0"
+                                        max={
+                                            props.person.age > 568036800
+                                                ? props.person.addr1.eth
+                                                : 0
+                                        }
+                                        step="0.00000000000001"
+                                        stringMode
+                                    />
+                                </Form.Item>
+                            ) : (
+                                <Form.Item
+                                    name="amount"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message:
+                                                "Lütfen çekeceğiniz miktarı giriniz!",
+                                        },
+                                    ]}
+                                >
+                                    <InputNumber
+                                        style={{
+                                            width: 250,
+                                        }}
+                                        min="0"
+                                        max={
+                                            props.person.age > 568036800
+                                                ? props.person.addr1.eth
+                                                : 0
+                                        }
+                                        step="0.00000000000001"
+                                        stringMode
+                                    />
+                                </Form.Item>
+                            )
+                        }
                     </Form.Item>
 
                     <Form.Item>

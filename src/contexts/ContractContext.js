@@ -121,7 +121,26 @@ export const ContractContextProvider = (props) => {
             values.birthdate.unix()
         );
         generateChildList();
-        console.log(values.address, values.name, values.birthdate.unix());
+    };
+
+    const sendMoney = async (address, amount) => {
+        await contractWithSigner.sendBalance(address, {
+            value: ethers.utils.parseUnits(amount, 18),
+        });
+    };
+
+    const unsendMoney = async (address, amount) => {
+        await contractWithSigner.withdrawParent(
+            address,
+            ethers.utils.parseUnits(amount, 18)
+        );
+    };
+
+    const withdrawMoney = async (values) => {
+        await contractWithSigner.withdrawChild(
+            values.address,
+            ethers.utils.parseUnits(values.amount, 18)
+        );
     };
 
     return (
@@ -135,6 +154,9 @@ export const ContractContextProvider = (props) => {
                 childObject,
                 ChildList,
                 addChild,
+                sendMoney,
+                unsendMoney,
+                withdrawMoney,
             }}
         >
             {props.children}

@@ -35,6 +35,7 @@ const InfoCard = (props) => {
                         isModalVisible={isModalVisible}
                         setIsModalVisible={setIsModalVisible}
                         childname={props.person.name}
+                        address={props.person.address}
                         action={action}
                     />
                     <div

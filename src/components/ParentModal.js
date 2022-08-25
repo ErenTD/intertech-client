@@ -1,9 +1,12 @@
 import { Button, Modal, Form, InputNumber, Typography } from "antd";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ContractContext } from "../contexts/ContractContext";
 
 const { Title } = Typography;
 
 const ParentModal = (props) => {
+    const { sendMoney, unsendMoney } = useContext(ContractContext);
+
     const handleCancel = () => {
         props.setIsModalVisible(false);
     };
@@ -16,7 +19,12 @@ const ParentModal = (props) => {
     };
 
     const onSubmit = (values) => {
-        console.log(values);
+        const action = props.action === "Para Çekme" ? true : false;
+        if (action) {
+            unsendMoney(props.address, values.amount);
+        } else {
+            sendMoney(props.address, values.amount);
+        }
     };
 
     return (
@@ -55,8 +63,12 @@ const ParentModal = (props) => {
                 form={form}
                 onFinish={onSubmit}
             >
-                <Form.Item wrapperCol={{ offset: 4, span: 12 }}>
-                    <InputNumber style={inputStyle} />
+                <Form.Item wrapperCol={{ offset: 4, span: 12 }} name="amount">
+                    <InputNumber
+                        style={inputStyle}
+                        step="0.00000000000001"
+                        stringMode
+                    />
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
