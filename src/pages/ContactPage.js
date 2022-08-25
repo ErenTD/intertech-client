@@ -75,7 +75,13 @@ const ContactPage = () => {
                         },
                     ]}
                 >
-                    <Input />
+                    <Input
+                        style={{
+                            backgroundImage: "linear-gradient(#ECF6FF,#ECF6FF)",
+                            color: "black",
+                            borderRadius: 12,
+                        }}
+                    />
                 </Form.Item>
 
                 <Form.Item
@@ -92,7 +98,13 @@ const ContactPage = () => {
                         },
                     ]}
                 >
-                    <Input />
+                    <Input
+                        style={{
+                            backgroundImage: "linear-gradient(#ECF6FF,#ECF6FF)",
+                            color: "black",
+                            borderRadius: 12,
+                        }}
+                    />
                 </Form.Item>
 
                 <Form.Item
@@ -105,14 +117,31 @@ const ContactPage = () => {
                         },
                     ]}
                 >
-                    <Input.TextArea showCount rows={5} maxLength={2500} />
+                    <Input.TextArea
+                        style={{
+                            backgroundImage: "linear-gradient(#ECF6FF,#ECF6FF)",
+                            color: "black",
+                            borderRadius: 12,
+                        }}
+                        showCount
+                        rows={5}
+                        maxLength={2500}
+                    />
                 </Form.Item>
 
                 <Form.Item
                     style={{ textAlign: "center" }}
                     wrapperCol={{ offset: 5, span: 16 }}
                 >
-                    <Button type="primary" onClick={onSubmit}>
+                    <Button
+                        style={{
+                            backgroundImage: "linear-gradient(#ECF6FF,#ECF6FF)",
+                            color: "#003C96",
+                            borderRadius: 10,
+                        }}
+                        type="primary"
+                        onClick={onSubmit}
+                    >
                         GÖNDER
                     </Button>
                 </Form.Item>

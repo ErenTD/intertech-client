@@ -26,6 +26,9 @@ const InfoCard = (props) => {
     return (
         <Card
             style={{
+                backgroundImage: "linear-gradient(#0984E3,#bae7ff)",
+                color: "#ffffff",
+                borderRadius: 100,
                 ...props.style,
                 width: 300,
             }}
@@ -69,6 +72,7 @@ const InfoCard = (props) => {
                         >
                             <div
                                 style={{
+                                    color: "#ffffff",
                                     marginLeft: "2rem",
                                     marginRight: "auto",
                                 }}
@@ -76,6 +80,12 @@ const InfoCard = (props) => {
                                 <Button
                                     type="primary"
                                     onClick={interactWithdraw}
+                                    style={{
+                                        backgroundImage:
+                                            "linear-gradient(#fa8c16,#ffa940)",
+                                        color: "#ffffff",
+                                        borderRadius: 5,
+                                    }}
                                 >
                                     Para Çek
                                 </Button>
@@ -89,7 +99,12 @@ const InfoCard = (props) => {
                                 <Button
                                     type="primary"
                                     onClick={interactDeposit}
-                                    danger
+                                    style={{
+                                        backgroundImage:
+                                            "linear-gradient(#ffffff,#ffffff)",
+                                        color: "#bfbfbf",
+                                        borderRadius: 5,
+                                    }}
                                 >
                                     Para Yatır
                                 </Button>
@@ -101,18 +116,24 @@ const InfoCard = (props) => {
         >
             <div
                 style={{
+                    color: "#ffffff",
                     display: "flex",
                     justifyContent: "center",
                     flexDirection: "column",
                     textAlign: "center",
                 }}
             >
-                <h1>{props.person.name}</h1>
-                <h6>{props.person.address}</h6>
+                <h1 style={{ color: "#ffffff" }}>{props.person.name}</h1>
+                <h6 style={{ color: "#ffffff" }}>{props.person.address}</h6>
                 <br />
-                <table style={{ textAlign: "left" }}>
+                <table style={{ textAlign: "left", color: "#ffffff" }}>
                     <thead>
-                        <tr style={{ textDecoration: "underline" }}>
+                        <tr
+                            style={{
+                                textDecoration: "underline",
+                                color: "#ffffff",
+                            }}
+                        >
                             <th>Cüzdan Adresi</th>
                             <th>ETH Miktarı</th>
                             <th>Toplam</th>
@@ -156,7 +177,7 @@ const InfoCard = (props) => {
                     </tbody>
                 </table>
                 <br />
-                <h2>
+                <h2 style={{ color: "#ffffff" }}>
                     Kalan Süre: {years} yıl {days} gün.
                 </h2>
                 <Progress percent={progress} showInfo={false} />

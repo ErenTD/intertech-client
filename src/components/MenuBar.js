@@ -41,7 +41,7 @@ const MenuBar = () => {
 
     const adminClickHandler = () => {
         setCurrent("sub4");
-        navigate("/admin");
+        navigate("/owner");
     };
 
     return (
@@ -53,6 +53,8 @@ const MenuBar = () => {
                 marginRight: "12%",
             }}
         >
+            <div id="background"></div>
+            <div id="bContent"></div>
             <Menu
                 onClick={landingClickHandler}
                 selectedKeys={[current]}
@@ -64,13 +66,26 @@ const MenuBar = () => {
                 items={items}
             />
             {accountType === 0 && (
-                <Button style={{ marginLeft: "1rem" }} onClick={connect}>
+                <Button
+                    style={{
+                        marginLeft: "1rem",
+                        backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                        color: "#003C96",
+                        borderRadius: 10,
+                    }}
+                    onClick={connect}
+                >
                     GİRİŞ YAP
                 </Button>
             )}
             {accountType === 1 && (
                 <Button
-                    style={{ marginLeft: "1rem" }}
+                    style={{
+                        marginLeft: "1rem",
+                        backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                        color: "#003C96",
+                        borderRadius: 10,
+                    }}
                     onClick={childClickHandler}
                 >
                     HESABIM
@@ -78,7 +93,12 @@ const MenuBar = () => {
             )}
             {accountType === 2 && (
                 <Button
-                    style={{ marginLeft: "1rem" }}
+                    style={{
+                        marginLeft: "1rem",
+                        backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                        color: "#003C96",
+                        borderRadius: 10,
+                    }}
                     onClick={parentClickHandler}
                 >
                     ÇOCUKLAR
@@ -86,7 +106,12 @@ const MenuBar = () => {
             )}
             {accountType === 3 && (
                 <Button
-                    style={{ marginLeft: "1rem" }}
+                    style={{
+                        marginLeft: "1rem",
+                        backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                        color: "#003C96",
+                        borderRadius: 10,
+                    }}
                     onClick={adminClickHandler}
                 >
                     PANEL

@@ -44,6 +44,9 @@ const AddChild = (props) => {
                     style={{
                         width: 600,
                         verticalAlign: "middle",
+                        backgroundImage: "linear-gradient(#0984E3,#F5F5F5)",
+                        color: "#003C96",
+                        borderRadius: 10,
                     }}
                 >
                     <Form
@@ -70,7 +73,15 @@ const AddChild = (props) => {
                                 },
                             ]}
                         >
-                            <Input style={inputStyle} />
+                            <Input
+                                style={{
+                                    inputStyle,
+                                    backgroundImage:
+                                        "linear-gradient(#e3f6ff,#f0faff)",
+                                    color: "black",
+                                    borderRadius: 12,
+                                }}
+                            />
                         </Form.Item>
                         <Form.Item
                             label="Cüzdan Adresi"
@@ -81,7 +92,15 @@ const AddChild = (props) => {
                                 },
                             ]}
                         >
-                            <Input style={inputStyle} />
+                            <Input
+                                style={{
+                                    inputStyle,
+                                    backgroundImage:
+                                        "linear-gradient(#e3f6ff,#f0faff)",
+                                    color: "black",
+                                    borderRadius: 12,
+                                }}
+                            />
                         </Form.Item>
                         <Form.Item
                             label="Doğum Günü"
@@ -92,10 +111,26 @@ const AddChild = (props) => {
                                 },
                             ]}
                         >
-                            <DatePicker style={inputStyle} />
+                            <DatePicker
+                                style={{
+                                    inputStyle,
+                                    backgroundImage:
+                                        "linear-gradient(#e3f6ff,#f0faff)",
+                                    color: "black",
+                                    borderRadius: 12,
+                                }}
+                            />
                         </Form.Item>
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                            <Button type="primary" htmlType="submit">
+                            <Button
+                                style={{
+                                    backgroundImage:
+                                        "linear-gradient(#e3f6ff,#f0faff)",
+                                    color: "#003C96",
+                                    borderRadius: 10,
+                                }}
+                                type="primary"
+                            >
                                 Kaydet
                             </Button>
                         </Form.Item>

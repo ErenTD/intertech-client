@@ -40,6 +40,9 @@ const WithdrawCard = (props) => {
     return (
         <Card
             style={{
+                backgroundImage: "linear-gradient(#0984E3,#F5F5F5)",
+                color: "black",
+                borderRadius: 100,
                 ...props.style,
                 width: 300,
             }}
@@ -74,8 +77,8 @@ const WithdrawCard = (props) => {
                     textAlign: "center",
                 }}
             >
-                <h1>{props.person.name}</h1>
-                <h6>{props.person.address}</h6>
+                <h1 style={{ color: "#ffffff" }}>{props.person.name}</h1>
+                <h6 style={{ color: "#ffffff" }}>{props.person.address}</h6>
                 <br />
                 <br />
                 <br />
@@ -124,7 +127,15 @@ const WithdrawCard = (props) => {
                         </Select>
                     </Form.Item>
                     <Form.Item name="balance">
-                        <Input disabled />
+                        <Input
+                            style={{
+                                backgroundImage:
+                                    "linear-gradient(#ffffff,#ffffff))",
+                                color: "grey",
+                                borderRadius: 10,
+                            }}
+                            disabled
+                        />
                     </Form.Item>
 
                     <Form.Item
@@ -147,6 +158,10 @@ const WithdrawCard = (props) => {
                                 >
                                     <InputNumber
                                         style={{
+                                            backgroundImage:
+                                                "linear-gradient(#ffffff,#ffffff))",
+                                            color: "grey",
+                                            borderRadius: 10,
                                             width: 250,
                                         }}
                                         min="0"
@@ -172,6 +187,10 @@ const WithdrawCard = (props) => {
                                 >
                                     <InputNumber
                                         style={{
+                                            backgroundImage:
+                                                "linear-gradient(#ffffff,#ffffff))",
+                                            color: "grey",
+                                            borderRadius: 10,
                                             width: 250,
                                         }}
                                         min="0"
@@ -189,7 +208,16 @@ const WithdrawCard = (props) => {
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">
+                        <Button
+                            style={{
+                                backgroundImage:
+                                    "linear-gradient(#ffffff,#ffffff",
+                                color: "grey",
+                                borderRadius: 10,
+                            }}
+                            type="primary"
+                            htmlType="submit"
+                        >
                             PARA ÇEK
                         </Button>
                     </Form.Item>

@@ -33,7 +33,15 @@ const ParentModal = (props) => {
             visible={props.isModalVisible}
             onCancel={handleCancel}
             footer={[
-                <Button key="back" onClick={handleCancel}>
+                <Button
+                    style={{
+                        backgroundImage: "linear-gradient(#e3f6ff,#f0faff)",
+                        color: "#003C96",
+                        borderRadius: 10,
+                    }}
+                    key="back"
+                    onClick={handleCancel}
+                >
                     İptal
                 </Button>,
             ]}
@@ -49,10 +57,10 @@ const ParentModal = (props) => {
             </Title>
             <Form
                 labelCol={{
-                    span: 1,
+                    span: 8,
                 }}
                 wrapperCol={{
-                    span: 10,
+                    span: 16,
                 }}
                 layout="horizontal"
                 initialValues={{
@@ -65,14 +73,27 @@ const ParentModal = (props) => {
             >
                 <Form.Item wrapperCol={{ offset: 4, span: 12 }} name="amount">
                     <InputNumber
-                        style={inputStyle}
+                        style={{
+                            inputStyle,
+                            backgroundImage: "linear-gradient(#e3f6ff,#f0faff)",
+                            color: "black",
+                            borderRadius: 12,
+                        }}
                         step="0.00000000000001"
                         stringMode
                     />
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
-                    <Button style={inputStyle} htmlType="submit">
+                    <Button
+                        style={{
+                            inputStyle,
+                            backgroundImage: "linear-gradient(#e3f6ff,#f0faff)",
+                            color: "black",
+                            borderRadius: 12,
+                        }}
+                        htmlType="submit"
+                    >
                         {props.action === "Para Çekme"
                             ? "Para Çek"
                             : "Para Yatır"}

@@ -32,7 +32,16 @@ const ParentPage = () => {
                     justifyContent: "right",
                 }}
             >
-                <Button onClick={interact}>ÇOCUK EKLE</Button>
+                <Button
+                    onClick={interact}
+                    style={{
+                        backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                        color: "#003C96",
+                        borderRadius: 10,
+                    }}
+                >
+                    ÇOCUK EKLE
+                </Button>
             </div>
             <AddChild
                 isModalVisible={isModalVisible}
