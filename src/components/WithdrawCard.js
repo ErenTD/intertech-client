@@ -197,7 +197,7 @@ const WithdrawCard = (props) => {
                                         min="0"
                                         max={
                                             props.person.age > 568036800
-                                                ? props.person.addr1.eth
+                                                ? props.person.addr2.eth
                                                 : 0
                                         }
                                         step="0.00000000000001"
