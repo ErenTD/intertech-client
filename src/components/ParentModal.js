@@ -1,21 +1,15 @@
 import { Button, Modal, Form, InputNumber, Typography } from "antd";
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { ContractContext } from "../contexts/ContractContext";
 
 const { Title } = Typography;
 
 const ParentModal = (props) => {
+    const [form] = Form.useForm();
     const { sendMoney, unsendMoney } = useContext(ContractContext);
 
     const handleCancel = () => {
         props.setIsModalVisible(false);
-    };
-
-    const [componentSize, setComponentSize] = useState("default");
-    const [form] = Form.useForm();
-
-    const onFormLayoutChange = ({ size }) => {
-        setComponentSize(size);
     };
 
     const onSubmit = (values) => {
@@ -32,19 +26,7 @@ const ParentModal = (props) => {
             title={props.action}
             visible={props.isModalVisible}
             onCancel={handleCancel}
-            footer={[
-                <Button
-                    style={{
-                        backgroundImage: "linear-gradient(#e3f6ff,#f0faff)",
-                        color: "#003C96",
-                        borderRadius: 10,
-                    }}
-                    key="back"
-                    onClick={handleCancel}
-                >
-                    İptal
-                </Button>,
-            ]}
+            footer={null}
         >
             <Title
                 level={3}
@@ -55,42 +37,27 @@ const ParentModal = (props) => {
             >
                 {props.childname}
             </Title>
-            <Form
-                labelCol={{
-                    span: 8,
-                }}
-                wrapperCol={{
-                    span: 16,
-                }}
-                layout="horizontal"
-                initialValues={{
-                    size: componentSize,
-                }}
-                onValuesChange={onFormLayoutChange}
-                size={componentSize}
-                form={form}
-                onFinish={onSubmit}
-            >
-                <Form.Item wrapperCol={{ offset: 4, span: 12 }} name="amount">
+            <Form form={form} onFinish={onSubmit}>
+                <Form.Item name="amount">
                     <InputNumber
                         style={{
-                            inputStyle,
                             backgroundImage: "linear-gradient(#e3f6ff,#f0faff)",
                             color: "black",
                             borderRadius: 12,
+                            width: "100%",
                         }}
                         step="0.00000000000001"
                         stringMode
                     />
                 </Form.Item>
 
-                <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
+                <Form.Item>
                     <Button
                         style={{
-                            inputStyle,
                             backgroundImage: "linear-gradient(#e3f6ff,#f0faff)",
                             color: "black",
                             borderRadius: 12,
+                            width: "100%",
                         }}
                         htmlType="submit"
                     >
@@ -102,10 +69,6 @@ const ParentModal = (props) => {
             </Form>
         </Modal>
     );
-};
-
-const inputStyle = {
-    width: "300px",
 };
 
 export default ParentModal;
