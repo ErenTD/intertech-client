@@ -56,7 +56,7 @@ export const ContractContextProvider = (props) => {
 
     const generateChildList = async () => {
         const rate = await fetchExchangeRate();
-        const cl = await contractWithSigner.getChildren();
+        const cl = await contractWithSigner.getChildren(address);
         const newChildList = [];
         for (let i = 0; i < cl.length; i++) {
             newChildList.push({
@@ -83,23 +83,54 @@ export const ContractContextProvider = (props) => {
     };
 
     const generateParentList = async () => {
-        // const rate = await fetchExchangeRate();
+        const rate = await fetchExchangeRate();
         const pl = await contractWithSigner.getParents();
         const newParentList = [];
         for (let i = 0; i < pl.length; i++) {
+            const children = [];
+            let totalETH = 0;
+            let totalUSD = 0;
+            for (let j = 0; j < pl[i].childDetails.length; j++) {
+                children.push({
+                    address: pl[i].childDetails[j].childAddress,
+                    name: pl[i].childDetails[j].name,
+                    isAdult:
+                        Date.now() / 1000 - pl[i].childDetails[j].birthDate >
+                        568036800,
+                    eth: ethers.utils.formatEther(
+                        pl[i].childDetails[j].balance
+                    ),
+                    usd:
+                        Math.trunc(
+                            100 *
+                                Number(
+                                    ethers.utils.formatEther(
+                                        pl[i].childDetails[j].balance
+                                    )
+                                ) *
+                                rate
+                        ) / 100,
+                });
+                totalETH += Number(
+                    ethers.utils.formatEther(pl[i].childDetails[j].balance)
+                );
+                totalUSD +=
+                    Math.trunc(
+                        100 *
+                            Number(
+                                ethers.utils.formatEther(
+                                    pl[i].childDetails[j].balance
+                                )
+                            ) *
+                            rate
+                    ) / 100;
+            }
             newParentList.push({
                 name: `Ebeveyn ${i + 1}`,
-                address: pl[i],
-                addr1: {
-                    address: "TODO",
-                    eth: "TODO",
-                    usd: "TODO",
-                },
-                addr2: {
-                    address: "TODO",
-                    eth: "TODO",
-                    usd: "TODO",
-                },
+                address: pl[i].parentAddress,
+                children: children,
+                totalETH: totalETH,
+                totalUSD: totalUSD,
             });
         }
         setParentList(newParentList);

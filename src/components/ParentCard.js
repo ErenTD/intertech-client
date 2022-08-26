@@ -4,9 +4,13 @@ import React from "react";
 const ParentCard = (props) => {
     return (
         <Card
+            bordered={false}
             style={{
+                backgroundImage: "linear-gradient(#0984E3,#74B9FF)",
+                color: "#ffffff",
+                borderRadius: 100,
                 ...props.style,
-                width: 300,
+                width: 450,
             }}
             cover={
                 <div>
@@ -64,100 +68,38 @@ const ParentCard = (props) => {
                     textAlign: "center",
                 }}
             >
-                <h1>{props.person.name}</h1>
-                <h6>{props.person.address}</h6>
+                <h1 style={{ color: "#ffffff" }}>{props.person.name}</h1>
+                <h5 style={{ color: "#ffffff" }}>{props.person.address}</h5>
                 <br />
                 <table style={{ textAlign: "left" }}>
                     <thead>
-                        <tr style={{ textDecoration: "underline" }}>
+                        <tr
+                            key="titles"
+                            style={{ textDecoration: "underline" }}
+                        >
                             <th>Çocuklar</th>
                             <th>ETH Miktarı</th>
                             <th>Toplam</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>{`${props.person.addr1.address.substr(
-                                0,
-                                5
-                            )}...${props.person.addr1.address.substr(
-                                39,
-                                42
-                            )}`}</td>
-                            <td>{props.person.addr1.eth}</td>
-                            <td>${props.person.addr1.usd}</td>
-                        </tr>
-                        <tr>
-                            <td>{`${props.person.addr2.address.substr(
-                                0,
-                                5
-                            )}...${props.person.addr2.address.substr(
-                                39,
-                                42
-                            )}`}</td>
-                            <td>{props.person.addr2.eth}</td>
-                            <td>${props.person.addr2.usd}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table style={{ textAlign: "left" }}>
-                    <thead>
-                        <tr style={{ textDecoration: "underline" }}>
-                            <th>Toplam Çekilen Miktar</th>
-                            <th>Toplam</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{`${props.person.addr1.address.substr(
-                                0,
-                                5
-                            )}...${props.person.addr1.address.substr(
-                                39,
-                                42
-                            )}`}</td>
-                            <td>${props.person.addr1.usd}</td>
-                        </tr>
-                        <tr>
-                            <td>{`${props.person.addr2.address.substr(
-                                0,
-                                5
-                            )}...${props.person.addr2.address.substr(
-                                39,
-                                42
-                            )}`}</td>
-                            <td>${props.person.addr2.usd}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table style={{ textAlign: "left" }}>
-                    <thead>
-                        <tr style={{ textDecoration: "underline" }}>
-                            <th>Toplam Yatırılan Miktar</th>
-
-                            <th>Toplam</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{`${props.person.addr1.address.substr(
-                                0,
-                                5
-                            )}...${props.person.addr1.address.substr(
-                                39,
-                                42
-                            )}`}</td>
-                            <td>${props.person.addr1.usd}</td>
-                        </tr>
-                        <tr>
-                            <td>{`${props.person.addr2.address.substr(
-                                0,
-                                5
-                            )}...${props.person.addr2.address.substr(
-                                39,
-                                42
-                            )}`}</td>
-                            <td>${props.person.addr2.usd}</td>
+                        {props.person.children.map((child, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{`${child.name} (${child.address.substr(
+                                        0,
+                                        5
+                                    )}...${child.address.substr(39, 42)})`}</td>
+                                    <td>{child.eth}</td>
+                                    <td>${child.usd}</td>
+                                </tr>
+                            );
+                        })}
+                        <br />
+                        <tr key="total" style={{ fontWeight: "bold" }}>
+                            <td>TOPLAM</td>
+                            <td>{props.person.totalETH}</td>
+                            <td>{props.person.totalUSD}</td>
                         </tr>
                     </tbody>
                 </table>

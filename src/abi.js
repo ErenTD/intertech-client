@@ -139,7 +139,13 @@ export const abi = [
         type: "function",
     },
     {
-        inputs: [],
+        inputs: [
+            {
+                internalType: "address",
+                name: "_parentAddress",
+                type: "address",
+            },
+        ],
         name: "getChildren",
         outputs: [
             {
@@ -178,9 +184,43 @@ export const abi = [
         name: "getParents",
         outputs: [
             {
-                internalType: "address[]",
-                name: "",
-                type: "address[]",
+                components: [
+                    {
+                        internalType: "address",
+                        name: "parentAddress",
+                        type: "address",
+                    },
+                    {
+                        components: [
+                            {
+                                internalType: "address",
+                                name: "childAddress",
+                                type: "address",
+                            },
+                            {
+                                internalType: "string",
+                                name: "name",
+                                type: "string",
+                            },
+                            {
+                                internalType: "uint256",
+                                name: "birthDate",
+                                type: "uint256",
+                            },
+                            {
+                                internalType: "uint256",
+                                name: "balance",
+                                type: "uint256",
+                            },
+                        ],
+                        internalType: "struct ChildContract.ChildView[]",
+                        name: "childDetails",
+                        type: "tuple[]",
+                    },
+                ],
+                internalType: "struct ParentContract.ParentView[]",
+                name: "response",
+                type: "tuple[]",
             },
         ],
         stateMutability: "view",
