@@ -56,7 +56,7 @@ export const ContractContextProvider = (props) => {
 
     const generateChildList = async () => {
         const rate = await fetchExchangeRate();
-        const cl = await contractWithSigner.getChildren(address);
+        const cl = await contractWithSigner.getChildren();
         const newChildList = [];
         for (let i = 0; i < cl.length; i++) {
             newChildList.push({

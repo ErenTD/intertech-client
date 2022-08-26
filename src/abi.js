@@ -139,13 +139,7 @@ export const abi = [
         type: "function",
     },
     {
-        inputs: [
-            {
-                internalType: "address",
-                name: "_parentAddress",
-                type: "address",
-            },
-        ],
+        inputs: [],
         name: "getChildren",
         outputs: [
             {
@@ -172,7 +166,7 @@ export const abi = [
                     },
                 ],
                 internalType: "struct ChildContract.ChildView[]",
-                name: "response",
+                name: "",
                 type: "tuple[]",
             },
         ],

@@ -2,6 +2,8 @@ import ParentCard from "../components/ParentCard";
 import Slider from "react-slick";
 import React, { useContext } from "react";
 import { ContractContext } from "../contexts/ContractContext";
+import { Row, Col } from "antd";
+import "../index.css";
 
 const AdminPage = () => {
     const { ParentList } = useContext(ContractContext);
@@ -31,40 +33,52 @@ const AdminPage = () => {
                     ))}
                 </Slider>
             </div>
-            <div
-                style={{
-                    marginLeft: "30%",
-                    marginRight: "30%",
-                    display: "flex",
-                    justifyContent: "center",
-                    flexDirection: "column",
-                    textAlign: "center",
-                }}
-            >
+            <div>
                 <br />
                 <br />
-                <h1>Toplam</h1>
                 <br />
-                <table style={{ textAlign: "left" }}>
-                    <thead>
-                        <tr style={{ textDecoration: "underline" }}>
-                            <th>Ebeveyn Sayısı</th>
-                            <th>Çocuk Sayısı</th>
-                            <th>Yatırılan Para</th>
-                            <th>Yatırılan Ethereum</th>
-                            <th>18 Yaşını Dolduran Çocuk Sayısı</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{ParentList.length}</td>
-                            <td>TODO</td>
-                            <td>TODO</td>
-                            <td>TODO</td>
-                            <td>TODO</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <Row className="sparkboxes">
+                    <Col span={4} offset={2}>
+                        <div class="box box1">
+                            <div class="details">
+                                <h2>{ParentList.length}</h2>
+                                <h2>Ebeveyn Sayısı</h2>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col span={4}>
+                        <div class="box box2">
+                            <div class="details">
+                                <h2>TODO</h2>
+                                <h2>Çocuk Sayısı</h2>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col span={4}>
+                        <div class="box box3">
+                            <div class="details">
+                                <h2>TODO</h2>
+                                <h2>Yatırılan Para</h2>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col span={4}>
+                        <div class="box box4">
+                            <div class="details">
+                                <h2>TODO</h2>
+                                <h2>Yatırılan Ethereum</h2>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col span={4}>
+                        <div class="box box5">
+                            <div class="details">
+                                <h2>TODO</h2>
+                                <h2>18 Yaşını Dolduran Çocuk</h2>
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
             </div>
         </>
     );
