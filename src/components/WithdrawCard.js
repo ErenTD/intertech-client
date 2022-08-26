@@ -1,9 +1,10 @@
 import { Card, Button, InputNumber, Form, Input, Select } from "antd";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ContractContext } from "../contexts/ContractContext";
 
 const WithdrawCard = (props) => {
     const { withdrawMoney } = useContext(ContractContext);
+    const [chosenAddr, setChosenAddr] = useState(0);
     const [form] = Form.useForm();
 
     const style = {
@@ -14,14 +15,12 @@ const WithdrawCard = (props) => {
 
     const onFinish = (values) => {
         const tmp = values;
-        tmp.address = props.person.addrlist[values.address].address;
+        tmp.address = props.person.addrlist[chosenAddr].address;
         withdrawMoney(tmp);
     };
 
-    let chosenAddr = 0;
-
     const onAddressChange = (value) => {
-        chosenAddr = value;
+        setChosenAddr(value);
         form.setFieldsValue({
             balance: `Çekilebilir Bakiyeniz: ${
                 props.person.age > 568036800
@@ -123,9 +122,7 @@ const WithdrawCard = (props) => {
                         />
                     </Form.Item>
                     <Form.Item
-                        shouldUpdate={(prevValues, currentValues) =>
-                            prevValues.address !== currentValues.address
-                        }
+                        shouldUpdate
                         name="amount"
                         rules={[
                             {
