@@ -7,34 +7,22 @@ const WithdrawCard = (props) => {
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
-        withdrawMoney(values);
+        const tmp = values;
+        tmp.address = props.person.addrlist[values.address].address;
+        withdrawMoney(tmp);
     };
 
+    let chosenAddr = 0;
+
     const onAddressChange = (value) => {
-        switch (value) {
-            case props.person.addr1.address:
-                form.setFieldsValue({
-                    balance: `Çekilebilir Bakiyeniz: ${
-                        props.person.age > 568036800
-                            ? props.person.addr1.eth
-                            : 0
-                    } ETH`,
-                });
-                return;
-
-            case props.person.addr2.address:
-                form.setFieldsValue({
-                    balance: `Çekilebilir Bakiyeniz: ${
-                        props.person.age > 568036800
-                            ? props.person.addr2.eth
-                            : 0
-                    } ETH`,
-                });
-                return;
-
-            default:
-                return;
-        }
+        chosenAddr = value;
+        form.setFieldsValue({
+            balance: `Çekilebilir Bakiyeniz: ${
+                props.person.age > 568036800
+                    ? props.person.addrlist[value].eth
+                    : 0
+            } ETH`,
+        });
     };
 
     return (
@@ -103,28 +91,16 @@ const WithdrawCard = (props) => {
                                 },
                             ]}
                         >
-                            <Select.Option value={props.person.addr1.address}>
-                                {`${props.person.addr1.address.substr(
-                                    0,
-                                    5
-                                )}...${props.person.addr1.address.substr(
-                                    39,
-                                    42
-                                )}`}
-                            </Select.Option>
-                            {props.person.addr2.address !== "N/A" ? (
-                                <Select.Option
-                                    value={props.person.addr2.address}
-                                >
-                                    {`${props.person.addr2.address.substr(
-                                        0,
-                                        5
-                                    )}...${props.person.addr2.address.substr(
-                                        39,
-                                        42
-                                    )}`}
-                                </Select.Option>
-                            ) : null}
+                            {props.person.addrlist.map((addr, index) => {
+                                return (
+                                    <Select.Option key={index}>
+                                        {`${addr.address.substr(
+                                            0,
+                                            5
+                                        )}...${addr.address.substr(39, 42)}`}
+                                    </Select.Option>
+                                );
+                            })}
                         </Select>
                     </Form.Item>
                     <Form.Item name="balance">
@@ -138,76 +114,36 @@ const WithdrawCard = (props) => {
                             disabled
                         />
                     </Form.Item>
-
                     <Form.Item
                         shouldUpdate={(prevValues, currentValues) =>
                             prevValues.address !== currentValues.address
                         }
+                        name="amount"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Lütfen çekeceğiniz miktarı giriniz!",
+                            },
+                        ]}
                     >
-                        {({ getFieldValue }) =>
-                            getFieldValue("address") ===
-                            props.person.addr1.address ? (
-                                <Form.Item
-                                    name="amount"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message:
-                                                "Lütfen çekeceğiniz miktarı giriniz!",
-                                        },
-                                    ]}
-                                >
-                                    <InputNumber
-                                        style={{
-                                            backgroundImage:
-                                                "linear-gradient(#ffffff,#ffffff))",
-                                            color: "grey",
-                                            borderRadius: 10,
-                                            width: 250,
-                                        }}
-                                        min="0"
-                                        max={
-                                            props.person.age > 568036800
-                                                ? props.person.addr1.eth
-                                                : 0
-                                        }
-                                        step="0.00000000000001"
-                                        stringMode
-                                    />
-                                </Form.Item>
-                            ) : (
-                                <Form.Item
-                                    name="amount"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message:
-                                                "Lütfen çekeceğiniz miktarı giriniz!",
-                                        },
-                                    ]}
-                                >
-                                    <InputNumber
-                                        style={{
-                                            backgroundImage:
-                                                "linear-gradient(#ffffff,#ffffff))",
-                                            color: "grey",
-                                            borderRadius: 10,
-                                            width: 250,
-                                        }}
-                                        min="0"
-                                        max={
-                                            props.person.age > 568036800
-                                                ? props.person.addr2.eth
-                                                : 0
-                                        }
-                                        step="0.00000000000001"
-                                        stringMode
-                                    />
-                                </Form.Item>
-                            )
-                        }
+                        <InputNumber
+                            style={{
+                                backgroundImage:
+                                    "linear-gradient(#ffffff,#ffffff))",
+                                color: "grey",
+                                borderRadius: 10,
+                                width: 250,
+                            }}
+                            min="0"
+                            max={
+                                props.person.age > 568036800
+                                    ? props.person.addrlist[chosenAddr].eth
+                                    : 0
+                            }
+                            step="0.00000000000001"
+                            stringMode
+                        />
                     </Form.Item>
-
                     <Form.Item>
                         <Button
                             style={{

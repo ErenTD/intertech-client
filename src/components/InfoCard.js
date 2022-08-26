@@ -141,52 +141,44 @@ const InfoCard = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>{`${props.person.addr1.address.substr(
-                                0,
-                                5
-                            )}...${props.person.addr1.address.substr(
-                                39,
-                                42
-                            )}`}</td>
-                            <td>{props.person.addr1.eth}</td>
-                            <td>${props.person.addr1.usd}</td>
-                        </tr>
-                        <tr
-                            style={{
-                                display: `${
-                                    props.person.addr2.address === "N/A"
-                                        ? "none"
-                                        : "table-row"
-                                }`,
-                            }}
-                        >
-                            <td>
-                                {props.person.addr2.address !== "N/A"
-                                    ? `${props.person.addr2.address.substr(
-                                          0,
-                                          5
-                                      )}...${props.person.addr2.address.substr(
-                                          39,
-                                          42
-                                      )}`
-                                    : "N/A"}
-                            </td>
-                            <td>{props.person.addr2.eth}</td>
-                            <td>${props.person.addr2.usd}</td>
-                        </tr>
+                        {props.person.addrlist.map((addr, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{`${addr.address.substr(
+                                        0,
+                                        5
+                                    )}...${addr.address.substr(39, 42)}`}</td>
+                                    <td>{addr.eth}</td>
+                                    <td>${addr.usd}</td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
                 </table>
                 <br />
-                <h2 style={{ color: "#ffffff" }}>
-                    Kalan Süre: {years} yıl {days} gün.
-                </h2>
+                {years > 0 && days > 0 ? (
+                    <h2 style={{ color: "#ffffff" }}>
+                        Kalan Süre: {years} yıl {days} gün.
+                    </h2>
+                ) : (
+                    <br />
+                )}
                 <Progress percent={progress} showInfo={false} />
-                <p>
-                    {props.person.name}'in 18 yaşına gelmesine bu günden
-                    itibaren {years} yıl {days} gün var. {props.person.name}'in
-                    yatırımlarını yukarıdaki özet tablosunda görebilirsiniz.
-                </p>
+                {years > 0 && days > 0 ? (
+                    <p>
+                        {props.person.name}'in 18 yaşına gelmesine bu günden
+                        itibaren {years} yıl {days} gün var. {props.person.name}
+                        'in yatırımlarını yukarıdaki özet tablosunda
+                        görebilirsiniz.
+                    </p>
+                ) : (
+                    <>
+                        <br />
+                        <h3 style={{ color: "#ffffff" }}>
+                            {props.person.name} 18 yaşına geldi!
+                        </h3>
+                    </>
+                )}
             </div>
         </Card>
     );

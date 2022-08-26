@@ -20,16 +20,7 @@ export const ContractContextProvider = (props) => {
         name: "-",
         address: "-",
         age: 0,
-        addr1: {
-            address: "-",
-            eth: "0",
-            usd: "0",
-        },
-        addr2: {
-            address: "-",
-            eth: "0",
-            usd: "0",
-        },
+        addrlist: [],
     });
 
     const navigate = useNavigate();
@@ -72,23 +63,20 @@ export const ContractContextProvider = (props) => {
                 name: cl[i].name,
                 address: cl[i].childAddress,
                 age: Date.now() / 1000 - cl[i].birthDate,
-                addr1: {
-                    address: address,
-                    eth: ethers.utils.formatEther(cl[i].balance),
-                    usd:
-                        Math.trunc(
-                            100 *
-                                Number(
-                                    ethers.utils.formatEther(cl[i].balance)
-                                ) *
-                                rate
-                        ) / 100,
-                },
-                addr2: {
-                    address: "N/A",
-                    eth: "HIDDEN",
-                    usd: "HIDDEN",
-                },
+                addrlist: [
+                    {
+                        address: address,
+                        eth: ethers.utils.formatEther(cl[i].balance),
+                        usd:
+                            Math.trunc(
+                                100 *
+                                    Number(
+                                        ethers.utils.formatEther(cl[i].balance)
+                                    ) *
+                                    rate
+                            ) / 100,
+                    },
+                ],
             });
         }
         setChildList(newChildList);
@@ -120,13 +108,11 @@ export const ContractContextProvider = (props) => {
     const generateChildObject = async () => {
         const rate = await fetchExchangeRate();
         const co = await contractWithSigner.getChild();
-        setChildObject({
-            name: co.name,
-            address: co.childAddress,
-            age: Date.now() / 1000 - co.birthDate,
-            addr1: {
-                address: co.funds[0].parentAddress,
-                eth: ethers.utils.formatEther(co.funds[0].balance),
+        const addrlist = [];
+        for (let i = 0; i < co.funds.length; i++) {
+            addrlist.push({
+                address: co.funds[i].parentAddress,
+                eth: ethers.utils.formatEther(co.funds[i].balance),
                 usd:
                     Math.trunc(
                         100 *
@@ -135,27 +121,13 @@ export const ContractContextProvider = (props) => {
                             ) *
                             rate
                     ) / 100,
-            },
-            addr2: {
-                address:
-                    co.funds.length > 1 ? co.funds[1].parentAddress : "N/A",
-                eth:
-                    co.funds.length > 1
-                        ? ethers.utils.formatEther(co.funds[1].balance)
-                        : "N/A",
-                usd:
-                    co.funds.length > 1
-                        ? Math.trunc(
-                              100 *
-                                  Number(
-                                      ethers.utils.formatEther(
-                                          co.funds[0].balance
-                                      )
-                                  ) *
-                                  rate
-                          ) / 100
-                        : "N/A",
-            },
+            });
+        }
+        setChildObject({
+            name: co.name,
+            address: co.childAddress,
+            age: Date.now() / 1000 - co.birthDate,
+            addrlist: addrlist,
         });
     };
 

@@ -29,7 +29,9 @@ const ParentPage = () => {
                     marginRight: "12%",
                     marginTop: "1rem",
                     display: "flex",
-                    justifyContent: "right",
+                    justifyContent: `${
+                        ChildList.length === 0 ? "center" : "right"
+                    }`,
                 }}
             >
                 <Button
@@ -47,6 +49,16 @@ const ParentPage = () => {
                 isModalVisible={isModalVisible}
                 setIsModalVisible={setIsModalVisible}
             />
+            {ChildList.length === 0 && (
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                    }}
+                >
+                    <h1 style={{ color: "#ffffff" }}>Hiç çocuk eklemediniz.</h1>
+                </div>
+            )}
             <div
                 style={{
                     marginLeft: "12%",
