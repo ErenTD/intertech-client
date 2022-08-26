@@ -47,12 +47,13 @@ const ContactPage = () => {
             <Title
                 level={2}
                 style={{
-                    marginBottom: "5rem",
+                    marginBottom: "2rem",
                     marginLeft: "5rem",
                     paddingTop: 20,
                     paddingLeft: 30,
                     paddingRight: 30,
                     textAlign: "center",
+                    color: "#ffffff",
                 }}
             >
                 Bize Ulaşın
@@ -63,10 +64,13 @@ const ContactPage = () => {
                 form={form}
                 name="contact"
                 scrollToFirstError
+                colon={false}
             >
                 <Form.Item
                     name="fullname"
-                    label="İsim - Soyisim"
+                    label={
+                        <label style={{ color: "white" }}>İsim - Soyisim</label>
+                    }
                     rules={[
                         {
                             required: true,
@@ -86,7 +90,7 @@ const ContactPage = () => {
 
                 <Form.Item
                     name="email"
-                    label="E-mail"
+                    label={<label style={{ color: "white" }}>E - mail</label>}
                     rules={[
                         {
                             type: "email",
@@ -109,7 +113,7 @@ const ContactPage = () => {
 
                 <Form.Item
                     name="message"
-                    label="Mesaj"
+                    label={<label style={{ color: "white" }}>Mesaj</label>}
                     rules={[
                         {
                             required: true,
@@ -123,7 +127,6 @@ const ContactPage = () => {
                             color: "black",
                             borderRadius: 12,
                         }}
-                        showCount
                         rows={5}
                         maxLength={2500}
                     />

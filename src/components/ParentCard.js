@@ -2,6 +2,7 @@ import { Avatar, Card } from "antd";
 import React from "react";
 
 const ParentCard = (props) => {
+    const imageUrl = `https://avatars.dicebear.com/api/adventurer/${props.person.address}.svg`;
     return (
         <Card
             bordered={false}
@@ -11,6 +12,7 @@ const ParentCard = (props) => {
                 borderRadius: 100,
                 ...props.style,
                 width: 450,
+                minHeight: 550,
             }}
             cover={
                 <div>
@@ -31,7 +33,7 @@ const ParentCard = (props) => {
                                 marginTop: "10%",
                             }}
                             size={125}
-                            src="https://joeschmoe.io/api/v1/random"
+                            src={imageUrl}
                         />
                     </div>
                     {props.buttons && (
@@ -40,7 +42,7 @@ const ParentCard = (props) => {
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
-                                marginTop: "10%",
+                                marginTop: "0",
                             }}
                         >
                             <div

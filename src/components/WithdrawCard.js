@@ -1,10 +1,16 @@
-import { Avatar, Card, Button, InputNumber, Form, Input, Select } from "antd";
+import { Card, Button, InputNumber, Form, Input, Select } from "antd";
 import React, { useContext } from "react";
 import { ContractContext } from "../contexts/ContractContext";
 
 const WithdrawCard = (props) => {
     const { withdrawMoney } = useContext(ContractContext);
     const [form] = Form.useForm();
+
+    const style = {
+        width: 450,
+        borderRadius: "10px",
+        margin: 3,
+    };
 
     const onFinish = (values) => {
         const tmp = values;
@@ -35,28 +41,6 @@ const WithdrawCard = (props) => {
                 ...props.style,
                 width: 300,
             }}
-            cover={
-                <div
-                    style={{
-                        overflow: "hidden",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                    }}
-                >
-                    <Avatar
-                        style={{
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                            marginTop: "10%",
-                        }}
-                        size={125}
-                        src="https://joeschmoe.io/api/v1/random"
-                    />
-                </div>
-            }
         >
             <div
                 style={{
@@ -64,10 +48,13 @@ const WithdrawCard = (props) => {
                     justifyContent: "center",
                     flexDirection: "column",
                     textAlign: "center",
+                    marginTop: "5rem",
                 }}
             >
-                <h1 style={{ color: "#ffffff" }}>{props.person.name}</h1>
-                <h6 style={{ color: "#ffffff" }}>{props.person.address}</h6>
+                <h1 style={{ color: "#ffffff" }}>Para Çek</h1>
+                <h6 style={{ color: "#ffffff" }}>
+                    Çekilecek Adres: {props.person.address}
+                </h6>
                 <br />
                 <br />
                 <br />
@@ -80,28 +67,49 @@ const WithdrawCard = (props) => {
                     }}
                     onFinish={onFinish}
                     autoComplete="off"
+                    colon={false}
                 >
-                    <Form.Item label="Çekilecek Adres" name="address">
-                        <Select
-                            onChange={onAddressChange}
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "Lütfen çekilecek adresi seçiniz!",
-                                },
-                            ]}
-                        >
-                            {props.person.addrlist.map((addr, index) => {
-                                return (
-                                    <Select.Option key={index}>
-                                        {`${addr.address.substr(
-                                            0,
-                                            5
-                                        )}...${addr.address.substr(39, 42)}`}
-                                    </Select.Option>
-                                );
-                            })}
-                        </Select>
+                    <Form.Item
+                        label={
+                            <label style={{ color: "white" }}>
+                                Çekilecek Adres
+                            </label>
+                        }
+                        name="address"
+                    >
+                        <div className="rounded-select">
+                            <Select
+                                onChange={onAddressChange}
+                                rules={[
+                                    {
+                                        required: true,
+                                        message:
+                                            "Lütfen çekilecek adresi seçiniz!",
+                                    },
+                                ]}
+                                dropdownStyle={{
+                                    backgroundImage:
+                                        "linear-gradient(#ECF6FF,#ECF6FF)",
+                                    color: "black",
+                                    borderRadius: 12,
+                                }}
+                                style={{ style }}
+                            >
+                                {props.person.addrlist.map((addr, index) => {
+                                    return (
+                                        <Select.Option key={index}>
+                                            {`${addr.address.substr(
+                                                0,
+                                                5
+                                            )}...${addr.address.substr(
+                                                39,
+                                                42
+                                            )}`}
+                                        </Select.Option>
+                                    );
+                                })}
+                            </Select>
+                        </div>
                     </Form.Item>
                     <Form.Item name="balance">
                         <Input
@@ -148,9 +156,9 @@ const WithdrawCard = (props) => {
                         <Button
                             style={{
                                 backgroundImage:
-                                    "linear-gradient(#ffffff,#ffffff",
-                                color: "grey",
-                                borderRadius: 10,
+                                    "linear-gradient(#fa8c16,#ffa940)",
+                                color: "#ffffff",
+                                borderRadius: 5,
                             }}
                             type="primary"
                             htmlType="submit"

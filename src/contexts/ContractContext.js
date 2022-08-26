@@ -148,7 +148,7 @@ export const ContractContextProvider = (props) => {
                     Math.trunc(
                         100 *
                             Number(
-                                ethers.utils.formatEther(co.funds[0].balance)
+                                ethers.utils.formatEther(co.funds[i].balance)
                             ) *
                             rate
                     ) / 100,

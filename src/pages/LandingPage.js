@@ -33,25 +33,27 @@ const LandingPage = () => {
                 <div
                     style={{
                         marginLeft: "5rem",
-                        marginRight: "1rem",
-                        width: "25%",
+                        marginTop: "3rem",
+                        width: "35%",
                     }}
                 >
-                    <h1>Safest Investment Network</h1>
-                    <h3>
+                    <h1 style={{ color: "#ffffff", fontSize: 40 }}>
+                        Güvenli, sürdürülebilir ve kaliteli bir yatırım ağı.
+                    </h1>
+                    <h3 style={{ color: "#ffffff" }}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Aliquam dictum lectus non purus gravida fringilla. Nunc
                         tincidunt augue mauris, vel ultrices nibh tempus id. In
                         blandit magna a vulputate viverra.
                     </h3>
-                    <h3>
+                    <h3 style={{ color: "#ffffff" }}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Aliquam dictum lectus non purus gravida fringilla. Nunc
                         tincidunt augue mauris, vel ultrices nibh tempus id. In
                         blandit magna a vulputate viverra.
                     </h3>
                 </div>
-                <div style={{ marginLeft: "1rem", marginRight: "20rem" }}>
+                <div style={{ marginLeft: "10rem", marginRight: "20rem" }}>
                     <InfoCard person={AHMET} />
                 </div>
             </div>

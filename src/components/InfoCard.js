@@ -6,6 +6,8 @@ const InfoCard = (props) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [action, setAction] = useState("");
 
+    const imageUrl = `https://avatars.dicebear.com/api/adventurer/${props.person.address}.svg`;
+
     const years = Math.trunc((568036800 - props.person.age) / 31536000);
     const days = Math.trunc(
         (568036800 - props.person.age - years * 31536000) / 86400
@@ -32,6 +34,7 @@ const InfoCard = (props) => {
                 borderRadius: 100,
                 ...props.style,
                 width: 300,
+                minHeight: 600,
             }}
             cover={
                 <div>
@@ -59,7 +62,7 @@ const InfoCard = (props) => {
                                 marginTop: "10%",
                             }}
                             size={125}
-                            src="https://joeschmoe.io/api/v1/random"
+                            src={imageUrl}
                         />
                     </div>
                     {props.buttons && (

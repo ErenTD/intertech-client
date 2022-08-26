@@ -2,6 +2,7 @@ import { Menu, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import { ContractContext } from "../contexts/ContractContext";
+import SiteLogo from "../media/siteLogo.svg";
 
 function getItem(label, key, icon, type) {
     return {
@@ -45,78 +46,85 @@ const MenuBar = () => {
     };
 
     return (
-        <div
-            style={{
-                display: "flex",
-                alignItems: "center",
-                marginLeft: "auto",
-                marginRight: "12%",
-            }}
-        >
-            <Menu
-                onClick={landingClickHandler}
-                selectedKeys={[current]}
-                style={{
-                    marginLeft: "auto",
-                    marginRight: 0,
-                    backgroundColor: "rgba(0, 0, 0, 0)",
-                }}
-                mode="horizontal"
-                items={items}
-                theme="dark"
+        <div style={{ display: "flex" }}>
+            <img
+                src={SiteLogo}
+                style={{ marginLeft: "12%", width: "7%" }}
+                alt="Logo"
             />
-            {accountType === 0 && (
-                <Button
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginLeft: "auto",
+                    marginRight: "12%",
+                }}
+            >
+                <Menu
+                    onClick={landingClickHandler}
+                    selectedKeys={[current]}
                     style={{
-                        marginLeft: "1rem",
-                        backgroundImage: "linear-gradient(#ffffff,#ffffff)",
-                        color: "#003C96",
-                        borderRadius: 10,
+                        marginLeft: "auto",
+                        marginRight: 0,
+                        backgroundColor: "rgba(0, 0, 0, 0)",
                     }}
-                    onClick={connect}
-                >
-                    GİRİŞ YAP
-                </Button>
-            )}
-            {accountType === 1 && (
-                <Button
-                    style={{
-                        marginLeft: "1rem",
-                        backgroundImage: "linear-gradient(#ffffff,#ffffff)",
-                        color: "#003C96",
-                        borderRadius: 10,
-                    }}
-                    onClick={childClickHandler}
-                >
-                    HESABIM
-                </Button>
-            )}
-            {accountType === 2 && (
-                <Button
-                    style={{
-                        marginLeft: "1rem",
-                        backgroundImage: "linear-gradient(#ffffff,#ffffff)",
-                        color: "#003C96",
-                        borderRadius: 10,
-                    }}
-                    onClick={parentClickHandler}
-                >
-                    ÇOCUKLAR
-                </Button>
-            )}
-            {accountType === 3 && (
-                <Button
-                    style={{
-                        marginLeft: "1rem",
-                        backgroundImage: "linear-gradient(#ffffff,#ffffff)",
-                        color: "#003C96",
-                        borderRadius: 10,
-                    }}
-                    onClick={adminClickHandler}
-                >
-                    PANEL
-                </Button>
-            )}
+                    mode="horizontal"
+                    items={items}
+                    theme="dark"
+                />
+                {accountType === 0 && (
+                    <Button
+                        style={{
+                            marginLeft: "1rem",
+                            backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                            color: "#003C96",
+                            borderRadius: 10,
+                        }}
+                        onClick={connect}
+                    >
+                        GİRİŞ YAP
+                    </Button>
+                )}
+                {accountType === 1 && (
+                    <Button
+                        style={{
+                            marginLeft: "1rem",
+                            backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                            color: "#003C96",
+                            borderRadius: 10,
+                        }}
+                        onClick={childClickHandler}
+                    >
+                        HESABIM
+                    </Button>
+                )}
+                {accountType === 2 && (
+                    <Button
+                        style={{
+                            marginLeft: "1rem",
+                            backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                            color: "#003C96",
+                            borderRadius: 10,
+                        }}
+                        onClick={parentClickHandler}
+                    >
+                        ÇOCUKLAR
+                    </Button>
+                )}
+                {accountType === 3 && (
+                    <Button
+                        style={{
+                            marginLeft: "1rem",
+                            backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                            color: "#003C96",
+                            borderRadius: 10,
+                        }}
+                        onClick={adminClickHandler}
+                    >
+                        PANEL
+                    </Button>
+                )}
+            </div>
         </div>
     );
 };
