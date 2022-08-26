@@ -40,15 +40,15 @@ export const ContractContextProvider = (props) => {
         const accountTypeString = await contract.getRole(address);
         if (accountTypeString === "child") {
             setAccountType(1);
-            generateChildObject();
+            await generateChildObject();
         }
         if (accountTypeString === "parent") {
             setAccountType(2);
-            generateChildList();
+            await generateChildList();
         }
         if (accountTypeString === "owner") {
             setAccountType(3);
-            generateParentList();
+            await generateParentList();
         }
         navigate(`/${accountTypeString}`);
         setCurrent("sub4");
@@ -57,6 +57,7 @@ export const ContractContextProvider = (props) => {
     const generateChildList = async () => {
         const rate = await fetchExchangeRate();
         const cl = await contractWithSigner.getChildren();
+        console.log(cl);
         const newChildList = [];
         for (let i = 0; i < cl.length; i++) {
             newChildList.push({

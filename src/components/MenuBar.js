@@ -86,7 +86,7 @@ const MenuBar = () => {
                             color: "#003C96",
                             borderRadius: 10,
                         }}
-                        onClick={connect}
+                        onClick={async () => await connect()}
                     >
                         GİRİŞ YAP
                     </Button>
