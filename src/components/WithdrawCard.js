@@ -51,9 +51,6 @@ const WithdrawCard = (props) => {
                 }}
             >
                 <h1 style={{ color: "#ffffff" }}>Para Çek</h1>
-                <h6 style={{ color: "#ffffff" }}>
-                    Çekilecek Adres: {props.person.address}
-                </h6>
                 <br />
                 <br />
                 <br />

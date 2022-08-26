@@ -49,7 +49,11 @@ const MenuBar = () => {
         <div style={{ display: "flex" }}>
             <img
                 src={SiteLogo}
-                style={{ marginLeft: "12%", width: "7%" }}
+                style={{
+                    marginLeft: "12%",
+                    maxHeight: "5rem",
+                    paddingTop: "15px",
+                }}
                 alt="Logo"
             />
             <div
@@ -58,6 +62,8 @@ const MenuBar = () => {
                     alignItems: "center",
                     marginLeft: "auto",
                     marginRight: "12%",
+                    verticalAlign: "top",
+                    marginTop: "-30px",
                 }}
             >
                 <Menu
