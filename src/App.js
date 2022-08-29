@@ -22,6 +22,8 @@ const App = () => {
         <div
             style={{
                 backgroundImage: `url(${background})`,
+                backgroundSize: "cover",
+                backgroundAttachment: "fixed",
                 display: "flex",
                 minHeight: "100vh",
                 flexDirection: "column",

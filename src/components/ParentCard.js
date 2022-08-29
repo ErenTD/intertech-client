@@ -88,7 +88,15 @@ const ParentCard = (props) => {
                         {props.person.children.map((child, index) => {
                             return (
                                 <tr key={index}>
-                                    <td>{`${child.name} (${child.address.substr(
+                                    <td
+                                        style={{
+                                            color: `${
+                                                child.isAdult
+                                                    ? "#ccee00"
+                                                    : "#ffffff"
+                                            }`,
+                                        }}
+                                    >{`${child.name} (${child.address.substr(
                                         0,
                                         5
                                     )}...${child.address.substr(39, 42)})`}</td>

@@ -18,6 +18,7 @@ const AddChild = (props) => {
 
     const onSubmit = (values) => {
         addChild(values);
+        props.setIsModalVisible(false);
     };
 
     return (

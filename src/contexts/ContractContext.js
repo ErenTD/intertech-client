@@ -91,6 +91,7 @@ export const ContractContextProvider = (props) => {
             const children = [];
             let totalETH = 0;
             let totalUSD = 0;
+            let totalChildrenAbove18 = 0;
             for (let j = 0; j < pl[i].childDetails.length; j++) {
                 children.push({
                     address: pl[i].childDetails[j].childAddress,
@@ -125,13 +126,19 @@ export const ContractContextProvider = (props) => {
                             ) *
                             rate
                     ) / 100;
+                totalChildrenAbove18 +=
+                    Date.now() / 1000 - pl[i].childDetails[j].birthDate >
+                    568036800
+                        ? 1
+                        : 0;
             }
             newParentList.push({
                 name: `Ebeveyn ${i + 1}`,
                 address: pl[i].parentAddress,
                 children: children,
-                totalETH: totalETH,
-                totalUSD: totalUSD,
+                totalETH: Math.trunc(10000 * totalETH) / 10000,
+                totalUSD: Math.trunc(100 * totalUSD) / 100,
+                totalChildrenAbove18: totalChildrenAbove18,
             });
         }
         setParentList(newParentList);

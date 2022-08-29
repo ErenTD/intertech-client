@@ -5,18 +5,18 @@ import InfoCard from "../components/InfoCard";
 
 const AHMET = {
     name: "Ahmet",
-    address: "0x9e5bF30a29560166fD47D461Dd1201a3bF56CEF4",
+    address: "0x2F55073c97D9E00B094f5353F8114E0Ae0be0BF7",
     age: 345200000,
     addrlist: [
         {
             address: "0xfC9F7e34782B70c3096133eAD13BD54c863051D4",
             eth: 10.2665,
-            usd: 1026.65,
+            usd: 14873.85,
         },
         {
             address: "0x7e1b65998b60Ce19b09373C82e30171C6D2dC0d9",
             eth: 20.365,
-            usd: 244.38,
+            usd: 29504.3,
         },
     ],
 };
@@ -32,25 +32,28 @@ const LandingPage = () => {
             >
                 <div
                     style={{
-                        marginLeft: "5rem",
+                        marginLeft: "9rem",
                         marginTop: "3rem",
-                        width: "35%",
+                        width: "40%",
                     }}
                 >
                     <h1 style={{ color: "#ffffff", fontSize: 40 }}>
                         Güvenli, sürdürülebilir ve kaliteli bir yatırım ağı.
                     </h1>
                     <h3 style={{ color: "#ffffff" }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam dictum lectus non purus gravida fringilla. Nunc
-                        tincidunt augue mauris, vel ultrices nibh tempus id. In
-                        blandit magna a vulputate viverra.
+                        <b>Chain Masters</b> ekibi olarak bankacılık sektörünün
+                        önemli bir eksiğini kapatmaya geldik. Merkeziyetsiz
+                        finans teknolojisi hakkında uzmanlaşan ekibimiz ile
+                        geliştirdiğimiz bu teknolojide çocuklarınıza kripto
+                        cüzdan açabilecek, miras bırakabilecek ve onlar adına
+                        yatırım yapabileceksiniz. Aynı zamanda 18 yaşına ulaşan
+                        çocuğunuz istediği zaman kendi cüzdanını himayesi altına
+                        alabilecek.
                     </h3>
                     <h3 style={{ color: "#ffffff" }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam dictum lectus non purus gravida fringilla. Nunc
-                        tincidunt augue mauris, vel ultrices nibh tempus id. In
-                        blandit magna a vulputate viverra.
+                        Dilerseniz, çocuğunuz 18 yaşına gelmeden hesaptaki
+                        parayı çekebilirsiniz. Bu şekilde ihtiyaç halinde
+                        paranıza istediğiniz zaman ulaşabileceksiniz.
                     </h3>
                 </div>
                 <div style={{ marginLeft: "10rem", marginRight: "20rem" }}>

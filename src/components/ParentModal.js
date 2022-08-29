@@ -19,6 +19,7 @@ const ParentModal = (props) => {
         } else {
             sendMoney(props.address, values.amount);
         }
+        props.setIsModalVisible(false);
     };
 
     return (

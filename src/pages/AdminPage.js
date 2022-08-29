@@ -16,6 +16,17 @@ const AdminPage = () => {
         slidesToScroll: 3,
     };
 
+    let ChildCount = 0;
+    let TotalETH = 0;
+    let TotalUSD = 0;
+    let TotalChildrenAbove18 = 0;
+    for (let i = 0; i < ParentList.length; i++) {
+        ChildCount += ParentList[i].children.length;
+        TotalETH += ParentList[i].totalETH;
+        TotalUSD += ParentList[i].totalUSD;
+        TotalChildrenAbove18 += ParentList[i].totalChildrenAbove18;
+    }
+
     return (
         <>
             <div
@@ -49,7 +60,7 @@ const AdminPage = () => {
                     <Col span={4}>
                         <div class="box box2">
                             <div class="details">
-                                <h2>TODO</h2>
+                                <h2>{ChildCount}</h2>
                                 <h2>Çocuk Sayısı</h2>
                             </div>
                         </div>
@@ -57,7 +68,7 @@ const AdminPage = () => {
                     <Col span={4}>
                         <div class="box box3">
                             <div class="details">
-                                <h2>TODO</h2>
+                                <h2>${Math.trunc(100 * TotalUSD) / 100}</h2>
                                 <h2>Yatırılan Para</h2>
                             </div>
                         </div>
@@ -65,7 +76,9 @@ const AdminPage = () => {
                     <Col span={4}>
                         <div class="box box4">
                             <div class="details">
-                                <h2>TODO</h2>
+                                <h2>
+                                    {Math.trunc(10000 * TotalETH) / 10000} ETH
+                                </h2>
                                 <h2>Yatırılan Ethereum</h2>
                             </div>
                         </div>
@@ -73,7 +86,7 @@ const AdminPage = () => {
                     <Col span={4}>
                         <div class="box box5">
                             <div class="details">
-                                <h2>TODO</h2>
+                                <h2>{TotalChildrenAbove18}</h2>
                                 <h2>18 Yaşını Dolduran Çocuk</h2>
                             </div>
                         </div>
