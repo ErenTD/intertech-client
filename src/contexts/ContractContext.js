@@ -1,15 +1,22 @@
 import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { abi, address } from "../abi";
+import { abi, contractAddress } from "../abi";
 import { ethers } from "ethers";
 
 export const ContractContext = createContext();
 
-const provider = new ethers.providers.Web3Provider(window.ethereum);
-const signer = provider.getSigner();
-const contract = new ethers.Contract(address, abi, provider);
-const contractWithSigner = contract.connect(signer);
+let metamaskCheck, provider, signer, contract, contractWithSigner;
+
+if (typeof window.ethereum !== "undefined") {
+    metamaskCheck = true;
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+    signer = provider.getSigner();
+    contract = new ethers.Contract(contractAddress, abi, provider);
+    contractWithSigner = contract.connect(signer);
+} else {
+    metamaskCheck = false;
+}
 
 export const ContractContextProvider = (props) => {
     const [accountType, setAccountType] = useState(0);
@@ -201,6 +208,7 @@ export const ContractContextProvider = (props) => {
     return (
         <ContractContext.Provider
             value={{
+                metamaskCheck,
                 accountType,
                 setAccountType,
                 current,

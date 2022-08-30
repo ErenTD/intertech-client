@@ -20,7 +20,7 @@ const items = [
 ];
 
 const MenuBar = () => {
-    const { accountType, connect, current, setCurrent } =
+    const { metamaskCheck, accountType, connect, current, setCurrent } =
         useContext(ContractContext);
 
     const navigate = useNavigate();
@@ -78,7 +78,7 @@ const MenuBar = () => {
                     items={items}
                     theme="dark"
                 />
-                {accountType === 0 && (
+                {accountType === 0 && metamaskCheck ? (
                     <Button
                         style={{
                             marginLeft: "1rem",
@@ -89,6 +89,18 @@ const MenuBar = () => {
                         onClick={async () => await connect()}
                     >
                         GİRİŞ YAP
+                    </Button>
+                ) : (
+                    <Button
+                        style={{
+                            marginLeft: "1rem",
+                            backgroundImage: "linear-gradient(#ffffff,#ffffff)",
+                            color: "#003C96",
+                            borderRadius: 10,
+                        }}
+                        href="https://metamask.io/"
+                    >
+                        METAMASK İNDİR
                     </Button>
                 )}
                 {accountType === 1 && (
