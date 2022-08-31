@@ -78,31 +78,35 @@ const MenuBar = () => {
                     items={items}
                     theme="dark"
                 />
-                {accountType === 0 && metamaskCheck ? (
-                    <Button
-                        style={{
-                            marginLeft: "1rem",
-                            backgroundImage: "linear-gradient(#ffffff,#ffffff)",
-                            color: "#003C96",
-                            borderRadius: 10,
-                        }}
-                        onClick={async () => await connect()}
-                    >
-                        GİRİŞ YAP
-                    </Button>
-                ) : (
-                    <Button
-                        style={{
-                            marginLeft: "1rem",
-                            backgroundImage: "linear-gradient(#ffffff,#ffffff)",
-                            color: "#003C96",
-                            borderRadius: 10,
-                        }}
-                        href="https://metamask.io/"
-                    >
-                        METAMASK İNDİR
-                    </Button>
-                )}
+                {accountType === 0 ? (
+                    metamaskCheck ? (
+                        <Button
+                            style={{
+                                marginLeft: "1rem",
+                                backgroundImage:
+                                    "linear-gradient(#ffffff,#ffffff)",
+                                color: "#003C96",
+                                borderRadius: 10,
+                            }}
+                            onClick={async () => await connect()}
+                        >
+                            GİRİŞ YAP
+                        </Button>
+                    ) : (
+                        <Button
+                            style={{
+                                marginLeft: "1rem",
+                                backgroundImage:
+                                    "linear-gradient(#ffffff,#ffffff)",
+                                color: "#003C96",
+                                borderRadius: 10,
+                            }}
+                            href="https://metamask.io/"
+                        >
+                            METAMASK İNDİR
+                        </Button>
+                    )
+                ) : null}
                 {accountType === 1 && (
                     <Button
                         style={{
